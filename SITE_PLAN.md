@@ -1,4 +1,4 @@
-# ClearAI Brief Website Plan
+# The AI Explainer Website Plan
 
 ## Goal
 

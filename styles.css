@@ -348,6 +348,7 @@ h1 {
 }
 
 .article-card {
+  display: block;
   min-height: 236px;
   padding: 22px;
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
@@ -470,6 +471,104 @@ h1 {
   letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.article-list-page {
+  width: min(1180px, 88vw);
+  margin: 0 auto;
+  padding: 68px 0;
+}
+
+.article-list-header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.5fr);
+  gap: 34px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.article-list-header h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.8rem);
+  line-height: 1;
+}
+
+.article-list-header p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.post-shell {
+  width: min(860px, 88vw);
+  margin: 0 auto;
+  padding: 56px 0 76px;
+}
+
+.post-card {
+  padding: clamp(26px, 5vw, 52px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 36px rgba(20, 26, 28, 0.07);
+}
+
+.post-card h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 1;
+}
+
+.post-card h2 {
+  margin: 34px 0 10px;
+  font-size: 1.5rem;
+  line-height: 1.18;
+}
+
+.post-card p,
+.post-card li {
+  color: var(--muted);
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 24px;
+  color: var(--leaf);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.post-lead {
+  color: #303b3e;
+  font-size: 1.17rem;
+}
+
+.post-card ul,
+.post-card ol {
+  padding-left: 22px;
+}
+
+.post-card li + li {
+  margin-top: 8px;
+}
+
+.post-note {
+  margin: 28px 0;
+  padding: 16px 18px;
+  color: #334344;
+  background: #eef4ef;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  color: var(--teal-dark);
+  font-weight: 800;
 }
 
 .launch-plan {
@@ -632,6 +731,7 @@ h1 {
   .intro-band,
   .content-shell,
   .section-heading,
+  .article-list-header,
   .site-footer {
     grid-template-columns: 1fr;
   }
