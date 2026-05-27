@@ -12,12 +12,12 @@
   --coral: #c95d3d;
   --steel: #496978;
   --shadow: 0 18px 55px rgba(20, 26, 28, 0.12);
-  --site-width: 1180px;
+  --site-width: 1120px;
   --article-list-width: 1120px;
   --post-width: 820px;
   --page-width: 900px;
-  --page-edge: clamp(40px, 8vw, 112px);
-  --narrow-page-edge: clamp(38px, 7vw, 96px);
+  --page-edge: clamp(64px, 12vw, 240px);
+  --narrow-page-edge: clamp(48px, 10vw, 180px);
 }
 
 * {
@@ -55,7 +55,7 @@ img {
   justify-content: space-between;
   gap: 24px;
   min-height: 72px;
-  padding: 0 clamp(24px, 6vw, 96px);
+  padding: 0 max(24px, calc((100vw - var(--site-width)) / 2));
   background: rgba(247, 246, 241, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
@@ -142,8 +142,8 @@ img {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(720px, calc(100% - var(--page-edge)));
-  margin-left: clamp(24px, 6vw, 96px);
+  width: min(var(--site-width), calc(100% - var(--page-edge)));
+  margin-inline: auto;
   padding: 110px 0 120px;
 }
 
@@ -249,6 +249,11 @@ h1 {
   padding: 16px 0 52px;
 }
 
+main > section:not(.hero) {
+  width: min(var(--site-width), calc(100% - var(--page-edge)));
+  margin-inline: auto;
+}
+
 .cluster-heading {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.6fr);
@@ -275,6 +280,10 @@ h1 {
   gap: 14px;
 }
 
+.topic-clusters .cluster-grid {
+  display: grid;
+}
+
 .cluster-card {
   display: grid;
   align-content: space-between;
@@ -285,6 +294,11 @@ h1 {
   overflow: hidden;
   position: relative;
   box-shadow: 0 16px 42px rgba(20, 26, 28, 0.13);
+}
+
+.topic-clusters .cluster-card {
+  display: grid;
+  color: #ffffff;
 }
 
 .cluster-card::after {
@@ -1039,7 +1053,7 @@ h1 {
   grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: start;
-  padding: 42px clamp(24px, 6vw, 96px);
+  padding: 42px max(24px, calc((100vw - var(--site-width)) / 2));
   color: #d8ddda;
   background: #1b2424;
 }
