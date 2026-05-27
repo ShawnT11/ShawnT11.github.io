@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Training, Validation, and Test Data Explained | The AI Explainer</title>
+    <meta
+      name="description"
+      content="Learn the difference between training data, validation data, and test data, and why AI models need separate datasets for fair evaluation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="The AI Explainer home">
+        <span class="brand-mark">AI</span>
+        <span>The AI Explainer</span>
+      </a>
+      <nav class="site-nav static-nav" aria-label="Main navigation">
+        <a href="../index.html#guides">Guides</a>
+        <a href="../articles.html">Articles</a>
+        <a href="../index.html#risks">Risks</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="post-shell">
+      <article class="post-card">
+        <p class="section-label">AI Training</p>
+        <h1>Training, Validation, and Test Data Explained</h1>
+        <div class="post-meta">
+          <span>Data guide</span>
+          <span>6 min read</span>
+          <span>Updated May 27, 2026</span>
+        </div>
+        <p class="post-lead">
+          AI projects often split data into training, validation, and test sets so the model can be trained, tuned, and
+          evaluated more fairly.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          Training data teaches the model. Validation data helps tune choices during development. Test data gives a final
+          check on examples the model has not been trained or tuned on. Keeping these sets separate helps reveal whether
+          the model can handle new data.
+        </p>
+
+        <div class="manual-ad" aria-label="Advertisement">
+          <span class="manual-ad-label">Advertisement</span>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3430860743061587" data-ad-slot="8408954150" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>Training data</h2>
+        <p>
+          Training data is the set of examples the model learns from directly. If the task is classifying support
+          tickets, the training set includes many tickets and their correct categories. The model studies these examples
+          and adjusts itself to reduce errors.
+        </p>
+
+        <h2>Validation data</h2>
+        <p>
+          Validation data is used while building the model. It helps developers compare settings, choose approaches, and
+          detect when the model is starting to overfit. Overfitting happens when a model does well on familiar examples
+          but performs poorly on new ones.
+        </p>
+
+        <h2>Test data</h2>
+        <p>
+          Test data is saved for a final check. The model should not learn from it during training. If the model performs
+          well on the test set, that is a better sign that it may work on new examples. It is not a guarantee, but it is
+          much more useful than testing only on the data used for training.
+        </p>
+
+        <h2>Why separation matters</h2>
+        <p>
+          If the same examples are used for training and testing, the results can look better than they really are. It is
+          like giving students the exam answers before the exam, then claiming the class mastered the subject.
+        </p>
+
+        <p class="post-note">
+          Best takeaway: separate datasets help measure whether an AI model learned useful patterns or only memorized the
+          examples it saw during development.
+        </p>
+      </article>
+      <nav class="post-nav" aria-label="Article navigation">
+        <a href="training-data-labeling-explained.html">Previous training guide</a>
+        <a href="training-data-bias-explained.html">Next training guide</a>
+      </nav>
+    </main>
+  </body>
+</html>

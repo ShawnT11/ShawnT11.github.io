@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Why Data Cleaning Matters in AI Training | The AI Explainer</title>
+    <meta
+      name="description"
+      content="Learn why data cleaning is important for AI training, including duplicates, missing values, wrong labels, noisy text, and inconsistent formats."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="The AI Explainer home">
+        <span class="brand-mark">AI</span>
+        <span>The AI Explainer</span>
+      </a>
+      <nav class="site-nav static-nav" aria-label="Main navigation">
+        <a href="../index.html#guides">Guides</a>
+        <a href="../articles.html">Articles</a>
+        <a href="../index.html#risks">Risks</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="post-shell">
+      <article class="post-card">
+        <p class="section-label">AI Training</p>
+        <h1>Why Data Cleaning Matters in AI Training</h1>
+        <div class="post-meta">
+          <span>Data guide</span>
+          <span>7 min read</span>
+          <span>Updated May 27, 2026</span>
+        </div>
+        <p class="post-lead">
+          Data cleaning is the process of fixing, removing, or organizing messy data before it is used to train or test
+          an AI model.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          AI models learn patterns from data. If the data contains duplicates, missing values, wrong labels, formatting
+          errors, or irrelevant examples, the model can learn weak or misleading patterns. Cleaning data helps the model
+          focus on the signal instead of the noise.
+        </p>
+
+        <div class="manual-ad" aria-label="Advertisement">
+          <span class="manual-ad-label">Advertisement</span>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3430860743061587" data-ad-slot="8408954150" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>Common data problems</h2>
+        <ul>
+          <li>Duplicate records that make one pattern look more common than it really is.</li>
+          <li>Missing values that leave important context out of the example.</li>
+          <li>Wrong labels, such as a support ticket marked as the wrong category.</li>
+          <li>Inconsistent formats, such as dates written in several different ways.</li>
+          <li>Irrelevant data that does not match the task the model should learn.</li>
+        </ul>
+
+        <h2>Why cleaning improves learning</h2>
+        <p>
+          Imagine training a model to identify customer complaints. If the dataset contains copied messages, mixed
+          languages, outdated categories, and labels chosen at random, the model may learn accidental patterns instead of
+          real complaint types. Cleaning the data makes the training examples more reliable.
+        </p>
+
+        <h2>Cleaning is not just deleting</h2>
+        <p>
+          Good cleaning does not mean removing anything that looks inconvenient. Sometimes missing information should be
+          filled carefully. Sometimes rare examples should be preserved because they matter. The goal is to make the data
+          more truthful and useful, not artificially perfect.
+        </p>
+
+        <h2>A basic cleaning checklist</h2>
+        <ol>
+          <li>Remove exact duplicates.</li>
+          <li>Check for missing or impossible values.</li>
+          <li>Standardize formats for dates, units, names, and categories.</li>
+          <li>Review labels for obvious mistakes.</li>
+          <li>Remove data that is unrelated to the training goal.</li>
+          <li>Document what was changed so others can review the process.</li>
+        </ol>
+
+        <p class="post-note">
+          Best takeaway: data cleaning matters because AI models learn from what you give them. Cleaner data usually
+          makes training more reliable, easier to test, and easier to explain.
+        </p>
+      </article>
+      <nav class="post-nav" aria-label="Article navigation">
+        <a href="what-is-ai-training.html">Previous training guide</a>
+        <a href="how-to-find-trustworthy-ai-training-data.html">Next training guide</a>
+      </nav>
+    </main>
+  </body>
+</html>

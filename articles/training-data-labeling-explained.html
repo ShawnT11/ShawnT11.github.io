@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Training Data Labeling Explained | The AI Explainer</title>
+    <meta
+      name="description"
+      content="Training data labeling explained in plain English, including why labels matter, common label types, and how bad labels affect AI models."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="The AI Explainer home">
+        <span class="brand-mark">AI</span>
+        <span>The AI Explainer</span>
+      </a>
+      <nav class="site-nav static-nav" aria-label="Main navigation">
+        <a href="../index.html#guides">Guides</a>
+        <a href="../articles.html">Articles</a>
+        <a href="../index.html#risks">Risks</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="post-shell">
+      <article class="post-card">
+        <p class="section-label">AI Training</p>
+        <h1>Training Data Labeling Explained</h1>
+        <div class="post-meta">
+          <span>Data guide</span>
+          <span>6 min read</span>
+          <span>Updated May 27, 2026</span>
+        </div>
+        <p class="post-lead">
+          Data labeling means adding the correct answer or category to examples so an AI model can learn what output is
+          expected.
+        </p>
+
+        <h2>The short answer</h2>
+        <p>
+          If you train a model to recognize whether an email is spam, each example may need a label such as "spam" or
+          "not spam." If you train an image model to detect damaged products, each image may need labels showing whether
+          damage is present and where it appears.
+        </p>
+
+        <div class="manual-ad" aria-label="Advertisement">
+          <span class="manual-ad-label">Advertisement</span>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3430860743061587" data-ad-slot="8408954150" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>Why labels matter</h2>
+        <p>
+          In supervised learning, labels are the examples of correct answers. The model compares its prediction with the
+          label and adjusts itself when it is wrong. If the labels are inconsistent or inaccurate, the model receives
+          confusing feedback.
+        </p>
+
+        <h2>Common label types</h2>
+        <ul>
+          <li>Category labels, such as refund request, technical issue, or billing question.</li>
+          <li>Sentiment labels, such as positive, neutral, or negative.</li>
+          <li>Bounding boxes for objects in images.</li>
+          <li>Transcripts for audio clips.</li>
+          <li>Quality ratings for generated answers or search results.</li>
+        </ul>
+
+        <h2>What makes labeling difficult</h2>
+        <p>
+          Some examples are easy. Others are ambiguous. A customer message might include both a billing question and a
+          technical complaint. Two human labelers may disagree. That is why good labeling projects need clear guidelines,
+          examples, and review.
+        </p>
+
+        <h2>How to improve labels</h2>
+        <ol>
+          <li>Write clear label definitions.</li>
+          <li>Give examples of each label.</li>
+          <li>Review disagreements between labelers.</li>
+          <li>Update guidelines when edge cases appear.</li>
+          <li>Check a sample of labels before training.</li>
+        </ol>
+
+        <p class="post-note">
+          Best takeaway: labels are teaching signals. If the labels are unclear, inconsistent, or wrong, the model can
+          learn the wrong lesson even if the algorithm is strong.
+        </p>
+      </article>
+      <nav class="post-nav" aria-label="Article navigation">
+        <a href="how-to-find-trustworthy-ai-training-data.html">Previous training guide</a>
+        <a href="train-validation-test-data-explained.html">Next training guide</a>
+      </nav>
+    </main>
+  </body>
+</html>

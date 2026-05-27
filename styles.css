@@ -9,6 +9,8 @@
   --amber: #e0a32b;
   --cobalt: #3658c9;
   --leaf: #687f3f;
+  --coral: #c95d3d;
+  --steel: #496978;
   --shadow: 0 18px 55px rgba(20, 26, 28, 0.12);
 }
 
@@ -235,6 +237,98 @@ h1 {
   font-size: 1.03rem;
 }
 
+.topic-clusters {
+  width: min(1180px, 88vw);
+  margin: 0 auto;
+  padding: 16px 0 42px;
+}
+
+.cluster-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.cluster-heading h2 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  line-height: 1.1;
+}
+
+.cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cluster-card {
+  display: grid;
+  align-content: space-between;
+  min-height: 210px;
+  padding: 20px;
+  color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cluster-card::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  bottom: -28px;
+  width: 110px;
+  height: 110px;
+  border: 18px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+
+.cluster-card span {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.cluster-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 44px 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.12;
+}
+
+.cluster-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.cluster-basics {
+  background: #075b58;
+}
+
+.cluster-training {
+  background: #3658c9;
+}
+
+.cluster-tools {
+  background: #687f3f;
+}
+
+.cluster-risks {
+  background: #c95d3d;
+}
+
+.cluster-human {
+  background: #496978;
+}
+
 .content-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
@@ -349,9 +443,57 @@ h1 {
 
 .article-card {
   display: block;
+  position: relative;
+  overflow: hidden;
   min-height: 236px;
   padding: 22px;
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.article-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: var(--teal);
+}
+
+.article-card[data-topic="training"]::before,
+.article-card[href*="training"]::before,
+.article-card[href*="data-cleaning"]::before,
+.article-card[href*="validation-test"]::before,
+.article-card[href*="bias"]::before {
+  background: var(--cobalt);
+}
+
+.article-card[data-topic="tools"]::before,
+.article-card[href*="assistants"]::before,
+.article-card[href*="image"]::before {
+  background: var(--leaf);
+}
+
+.article-card[data-topic="risks"]::before,
+.article-card[href*="privacy"]::before,
+.article-card[href*="hallucinations"]::before,
+.article-card[href*="check-ai"]::before {
+  background: var(--coral);
+}
+
+.article-card[data-topic="work"]::before,
+.article-card[data-topic="people"]::before,
+.article-card[href*="ai-helps-people"]::before,
+.article-card[href*="productivity"]::before,
+.article-card[href*="teachers"]::before,
+.article-card[href*="small-business"]::before,
+.article-card[href*="healthcare"]::before,
+.article-card[href*="creativity"]::before,
+.article-card[href*="accessibility"]::before,
+.article-card[href*="data-analysis"]::before,
+.article-card[href*="team-collaboration"]::before,
+.article-card[href*="human-skills"]::before,
+.article-card[href*="students"]::before,
+.article-card[href*="emails"]::before {
+  background: var(--steel);
 }
 
 .article-card:hover {
@@ -395,6 +537,14 @@ h1 {
 
 .side-panel {
   padding: 22px;
+}
+
+.side-panel-accent {
+  border-left: 5px solid var(--cobalt);
+}
+
+.side-panel-human {
+  border-left: 5px solid var(--steel);
 }
 
 .side-panel h2 {
@@ -471,6 +621,110 @@ h1 {
   letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.training-pathway {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+  gap: 26px;
+  width: min(1180px, 88vw);
+  margin: 0 auto 34px;
+  padding: 32px;
+  background: #1b2424;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.pathway-copy h2 {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.06;
+}
+
+.pathway-copy p:last-child {
+  margin: 18px 0 0;
+  color: #c7d1ce;
+}
+
+.training-pathway .section-label {
+  color: #9ed7d1;
+}
+
+.pathway-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pathway-steps a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 12px 14px;
+  color: #e9efed;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.pathway-steps span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  color: #101818;
+  background: var(--amber);
+  border-radius: 8px;
+  font-size: 0.72rem;
+}
+
+.human-ai-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.75fr);
+  gap: 26px;
+  width: min(1180px, 88vw);
+  margin: 0 auto 34px;
+  padding: 32px;
+  background:
+    linear-gradient(135deg, rgba(73, 105, 120, 0.12), rgba(224, 163, 43, 0.1)),
+    var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.human-ai-band h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.07;
+}
+
+.human-ai-band p:last-child {
+  max-width: 720px;
+  margin: 18px 0 0;
+  color: var(--muted);
+}
+
+.human-ai-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-content: center;
+}
+
+.human-ai-links a {
+  min-height: 62px;
+  display: grid;
+  align-items: center;
+  padding: 12px 14px;
+  color: #223033;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 800;
 }
 
 .article-list-page {
@@ -732,6 +986,9 @@ h1 {
   .content-shell,
   .section-heading,
   .article-list-header,
+  .cluster-heading,
+  .training-pathway,
+  .human-ai-band,
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -744,6 +1001,12 @@ h1 {
 
   .sidebar {
     position: static;
+  }
+
+  .cluster-grid,
+  .human-ai-links,
+  .pathway-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .plan-grid {
@@ -776,6 +1039,17 @@ h1 {
 
   .article-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cluster-grid,
+  .human-ai-links,
+  .pathway-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .training-pathway,
+  .human-ai-band {
+    padding: 24px;
   }
 
   .featured-article {
