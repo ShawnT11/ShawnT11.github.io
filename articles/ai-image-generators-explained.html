@@ -51,11 +51,39 @@
         "isAccessibleForFree": true
       }
     </script>
+    <!-- Breadcrumb metadata -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://theaiexplainer.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Articles",
+            "item": "https://theaiexplainer.com/articles.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI Image Generators Explained",
+            "item": "https://theaiexplainer.com/articles/ai-image-generators-explained.html"
+          }
+        ]
+      }
+    </script>
+    <!-- End breadcrumb metadata -->
     <!-- End search and social metadata -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=responsive-layout-20260527-5" />
+    <link rel="stylesheet" href="../styles.css?v=click-paths-20260528-1" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -73,6 +101,13 @@
     </header>
 
     <main class="post-shell">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="../articles.html">Articles</a>
+        <span aria-hidden="true">/</span>
+        <span>AI Image Generators Explained</span>
+      </nav>
       <article class="post-card">
         <p class="section-label">Tools</p>
         <h1>AI Image Generators Explained</h1>
@@ -136,6 +171,33 @@
           Best takeaway: AI image tools are useful for ideas and quick visuals, but they are not a replacement for
           careful review, licensing checks, and professional design judgment.
         </p>
+        <section class="related-guides" aria-labelledby="related-guides-title">
+          <div class="related-heading">
+            <p class="section-label">Keep reading</p>
+            <h2 id="related-guides-title">Useful next guides</h2>
+            <p>Continue with a closely related explanation while the idea is still fresh.</p>
+          </div>
+          <div class="related-grid">
+            <a class="related-card" href="how-to-compare-ai-assistants.html">
+              <span class="related-topic">Tools</span>
+              <h3>How to Compare AI Assistants Without Getting Lost</h3>
+              <p>A practical framework for choosing an AI assistant by task instead of hype.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+            <a class="related-card" href="what-is-artificial-intelligence.html">
+              <span class="related-topic">AI Basics</span>
+              <h3>What Is Artificial Intelligence?</h3>
+              <p>A beginner-friendly explanation of AI, machine learning, and where AI fits in everyday life.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+            <a class="related-card" href="what-is-generative-ai.html">
+              <span class="related-topic">AI Basics</span>
+              <h3>What Is Generative AI?</h3>
+              <p>How AI creates text, images, code, and other content, plus what users should watch out for.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+          </div>
+        </section>
       </article>
       <nav class="post-nav" aria-label="Article navigation">
         <a href="use-ai-to-write-better-emails.html">Previous guide</a>

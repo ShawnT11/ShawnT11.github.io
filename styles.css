@@ -469,7 +469,8 @@ main > section:not(.hero) {
 }
 
 .article-card {
-  display: block;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
   position: relative;
   overflow: hidden;
   min-height: 236px;
@@ -529,6 +530,11 @@ main > section:not(.hero) {
   box-shadow: var(--shadow);
 }
 
+.article-card:hover h3,
+.article-card:focus-visible h3 {
+  color: var(--teal-dark);
+}
+
 .article-card h3 {
   margin: 0 0 10px;
   font-size: 1.17rem;
@@ -540,10 +546,35 @@ main > section:not(.hero) {
   color: var(--muted);
 }
 
-.article-card span {
+.article-card > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
   color: var(--leaf);
   font-size: 0.84rem;
   font-weight: 800;
+}
+
+.article-card > span::after {
+  content: "Read guide";
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  color: #ffffff;
+  background: var(--teal-dark);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.article-card:hover > span::after,
+.article-card:focus-visible > span::after {
+  background: var(--cobalt);
+  transform: translateX(2px);
 }
 
 .empty-state {
@@ -903,6 +934,25 @@ main > section:not(.hero) {
   padding: 56px 0 76px;
 }
 
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.breadcrumbs a {
+  color: var(--teal-dark);
+}
+
+.breadcrumbs a:hover {
+  color: var(--ink);
+}
+
 .post-card {
   padding: clamp(26px, 5vw, 52px);
   background: var(--surface);
@@ -966,7 +1016,117 @@ main > section:not(.hero) {
   justify-content: space-between;
   gap: 16px;
   margin-top: 22px;
+  font-weight: 800;
+}
+
+.post-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 16px;
   color: var(--teal-dark);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(20, 26, 28, 0.06);
+}
+
+.post-nav a:last-child {
+  color: #ffffff;
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+}
+
+.post-nav a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(20, 26, 28, 0.12);
+}
+
+.related-guides {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.related-heading {
+  margin-bottom: 16px;
+}
+
+.related-heading h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.related-heading p:last-child {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.related-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 210px;
+  padding: 18px;
+  background: #f3f8f6;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.related-card:nth-child(2) {
+  background: #f6f7ff;
+}
+
+.related-card:nth-child(3) {
+  background: #fff7ed;
+}
+
+.related-card:hover,
+.related-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(0, 124, 120, 0.38);
+  box-shadow: var(--shadow);
+}
+
+.related-topic {
+  color: var(--teal-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.related-card h3 {
+  margin: 12px 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.22;
+}
+
+.related-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.related-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  min-height: 32px;
+  padding: 0 12px;
+  color: #ffffff;
+  background: var(--teal-dark);
+  border-radius: 999px;
+  font-size: 0.78rem;
   font-weight: 800;
 }
 
@@ -1232,6 +1392,11 @@ main > section:not(.hero) {
     grid-template-columns: 1fr;
   }
 
+  .article-card > span {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .article-list-page {
     margin: 0;
     max-width: 100vw;
@@ -1315,6 +1480,22 @@ main > section:not(.hero) {
 
   .featured-article {
     padding: 22px;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-card {
+    min-height: 0;
+  }
+
+  .post-nav {
+    flex-direction: column;
+  }
+
+  .post-nav a {
+    width: 100%;
   }
 
 }

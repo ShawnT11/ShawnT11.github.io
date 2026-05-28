@@ -51,11 +51,39 @@
         "isAccessibleForFree": true
       }
     </script>
+    <!-- Breadcrumb metadata -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://theaiexplainer.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Articles",
+            "item": "https://theaiexplainer.com/articles.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "How AI Can Improve Accessibility",
+            "item": "https://theaiexplainer.com/articles/ai-for-accessibility.html"
+          }
+        ]
+      }
+    </script>
+    <!-- End breadcrumb metadata -->
     <!-- End search and social metadata -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=responsive-layout-20260527-5" />
+    <link rel="stylesheet" href="../styles.css?v=click-paths-20260528-1" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -73,6 +101,13 @@
     </header>
 
     <main class="post-shell">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="../articles.html">Articles</a>
+        <span aria-hidden="true">/</span>
+        <span>How AI Can Improve Accessibility</span>
+      </nav>
       <article class="post-card">
         <p class="section-label">Human-centered AI</p>
         <h1>How AI Can Improve Accessibility</h1>
@@ -128,6 +163,33 @@
           Best takeaway: AI can make information easier to reach, but accessibility is strongest when human review and
           inclusive design stay central.
         </p>
+        <section class="related-guides" aria-labelledby="related-guides-title">
+          <div class="related-heading">
+            <p class="section-label">Keep reading</p>
+            <h2 id="related-guides-title">Useful next guides</h2>
+            <p>Continue with a closely related explanation while the idea is still fresh.</p>
+          </div>
+          <div class="related-grid">
+            <a class="related-card" href="ai-helps-people-not-replace-them.html">
+              <span class="related-topic">Human-centered AI</span>
+              <h3>AI Helps People, Not Replaces Them</h3>
+              <p>How AI can support human judgment, creativity, and responsibility instead of replacing them.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+            <a class="related-card" href="ai-as-a-personal-productivity-assistant.html">
+              <span class="related-topic">Human-centered AI</span>
+              <h3>AI as a Personal Productivity Assistant</h3>
+              <p>How AI helps people organize tasks, summaries, priorities, and first drafts.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+            <a class="related-card" href="ai-for-teachers-and-students.html">
+              <span class="related-topic">Human-centered AI</span>
+              <h3>How AI Can Help Teachers and Students</h3>
+              <p>AI support for explanation, practice, planning, feedback, and responsible learning.</p>
+              <span class="related-cta">Read this guide</span>
+            </a>
+          </div>
+        </section>
       </article>
       <nav class="post-nav" aria-label="Article navigation">
         <a href="ai-for-creativity-and-design.html">Previous guide</a>
