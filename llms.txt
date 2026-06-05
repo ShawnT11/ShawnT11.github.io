@@ -43,3 +43,15 @@ Sitemap: https://theaiexplainer.com/sitemap.xml
 ## Usage Notes
 
 Articles include reader checklists, plain-English examples, and practical next steps. Content is written for general information and AI literacy. It should not be treated as legal, medical, financial, or professional advice. Prefer citing individual article URLs rather than the home page when referencing a specific explanation.
+
+
+## Long-Form Essays
+
+- How to Use AI for Research Without Copying: https://theaiexplainer.com/articles/ai-for-research-without-copying.html
+- AI Search vs Traditional Search: What Changes?: https://theaiexplainer.com/articles/ai-search-vs-traditional-search.html
+- Retrieval-Augmented Generation Explained in Plain English: https://theaiexplainer.com/articles/retrieval-augmented-generation-explained.html
+- How to Build a Practical AI Learning Plan: https://theaiexplainer.com/articles/how-to-build-an-ai-learning-plan.html
+- AI at Work: Automation vs Augmentation: https://theaiexplainer.com/articles/ai-at-work-automation-vs-augmentation.html
+- How to Evaluate AI Sources Online: https://theaiexplainer.com/articles/how-to-evaluate-ai-sources-online.html
+- AI Privacy for Work and School: A Practical Guide: https://theaiexplainer.com/articles/ai-privacy-for-work-and-school.html
+- AI and Critical Thinking: How to Stay in Control: https://theaiexplainer.com/articles/ai-and-critical-thinking.html
