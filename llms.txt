@@ -11,6 +11,7 @@ Sitemap: https://theaiexplainer.com/sitemap.xml
 - All articles: https://theaiexplainer.com/articles.html
 - About: https://theaiexplainer.com/about.html
 - Contact and corrections policy: https://theaiexplainer.com/contact.html
+- Editorial policy: https://theaiexplainer.com/editorial-policy.html
 - Privacy policy: https://theaiexplainer.com/privacy.html
 - Copyright: https://theaiexplainer.com/copyright.html
 
@@ -41,4 +42,4 @@ Sitemap: https://theaiexplainer.com/sitemap.xml
 
 ## Usage Notes
 
-Content is written for general information and AI literacy. It should not be treated as legal, medical, financial, or professional advice. Prefer citing individual article URLs rather than the home page when referencing a specific explanation.
+Articles include reader checklists, plain-English examples, and practical next steps. Content is written for general information and AI literacy. It should not be treated as legal, medical, financial, or professional advice. Prefer citing individual article URLs rather than the home page when referencing a specific explanation.
