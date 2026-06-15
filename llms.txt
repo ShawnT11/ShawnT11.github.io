@@ -1,59 +1,34 @@
 # The AI Explainer
 
-The AI Explainer is a plain-English AI literacy website for readers who want clear explanations of AI concepts, tools, training data, privacy, and responsible use.
+The AI Explainer is a plain-English AI literacy site for readers who want practical explanations of AI concepts, tools, training data, privacy, verification, and responsible use.
 
-Primary site: https://theaiexplainer.com/
-Sitemap: https://theaiexplainer.com/sitemap.xml
-
-## Core Pages
+## Main Pages
 
 - Home: https://theaiexplainer.com/
-- All articles: https://theaiexplainer.com/articles.html
-- About: https://theaiexplainer.com/about.html
-- Contact and corrections policy: https://theaiexplainer.com/contact.html
+- Articles: https://theaiexplainer.com/articles.html
+- Resources and checklists: https://theaiexplainer.com/resources.html
 - Editorial policy: https://theaiexplainer.com/editorial-policy.html
+- About: https://theaiexplainer.com/about.html
 - Privacy policy: https://theaiexplainer.com/privacy.html
-- Copyright: https://theaiexplainer.com/copyright.html
 
-## Practical Resources
+## Practical Workflow Guides
 
-- AI tools and checklists: https://theaiexplainer.com/resources.html
-- AI Output Checker: https://theaiexplainer.com/ai-output-checklist.html
-- AI Prompt Library: https://theaiexplainer.com/prompt-library.html
-- Training Data Quality Checklist: https://theaiexplainer.com/training-data-checklist.html
-- Plain-English AI Glossary: https://theaiexplainer.com/ai-glossary.html
+- How to Use AI for Meeting Notes Without Losing Decisions: https://theaiexplainer.com/articles/ai-for-meeting-notes.html
+- How AI Can Help With Project Management Without Taking Over: https://theaiexplainer.com/articles/ai-for-project-management.html
+- How AI Can Support Customer Service Without Sounding Robotic: https://theaiexplainer.com/articles/ai-for-customer-support.html
+- How to Write Better AI Prompts: A Practical Guide: https://theaiexplainer.com/articles/how-to-write-better-ai-prompts.html
+- A Simple AI Risk Assessment for Everyday Users: https://theaiexplainer.com/articles/ai-risk-assessment-for-everyday-users.html
+- How to Check AI Citations and Sources: https://theaiexplainer.com/articles/ai-citation-and-source-checking.html
+- How Job Seekers Can Use AI Without Losing Their Own Voice: https://theaiexplainer.com/articles/ai-for-job-seekers.html
+- How to Use AI for Language Learning Without Memorizing Bad Mistakes: https://theaiexplainer.com/articles/ai-for-language-learning.html
+- How Parents Can Explain AI to Kids in Plain English: https://theaiexplainer.com/articles/ai-for-parents.html
+- How to Write a Simple AI Policy for a Small Team: https://theaiexplainer.com/articles/small-team-ai-policy.html
+- What to Check Before You Automate a Task With AI: https://theaiexplainer.com/articles/ai-automation-checklist-before-you-automate.html
+- How Nonprofits Can Use AI Carefully and Practically: https://theaiexplainer.com/articles/ai-for-nonprofits.html
+- How to Use AI With Spreadsheets Without Trusting Bad Data: https://theaiexplainer.com/articles/ai-for-spreadsheets.html
+- How Content Creators Can Use AI Without Becoming Generic: https://theaiexplainer.com/articles/ai-for-content-creators.html
 
-## Recommended Starter Articles
-
-- What Is Artificial Intelligence?: https://theaiexplainer.com/articles/what-is-artificial-intelligence.html
-- What Is Generative AI?: https://theaiexplainer.com/articles/what-is-generative-ai.html
-- What Is Machine Learning?: https://theaiexplainer.com/articles/what-is-machine-learning.html
-- What Is a Prompt?: https://theaiexplainer.com/articles/what-is-a-prompt.html
-- How to Check AI Answers: https://theaiexplainer.com/articles/how-to-check-ai-answers.html
-
-## Training Data Series
-
-- What Does It Mean to Train an AI Model?: https://theaiexplainer.com/articles/what-is-ai-training.html
-- Why Data Cleaning Matters in AI Training: https://theaiexplainer.com/articles/why-data-cleaning-matters-ai.html
-- How to Find Trustworthy Data for AI Training: https://theaiexplainer.com/articles/how-to-find-trustworthy-ai-training-data.html
-- Training Data Labeling Explained: https://theaiexplainer.com/articles/training-data-labeling-explained.html
-- Training, Validation, and Test Data Explained: https://theaiexplainer.com/articles/train-validation-test-data-explained.html
-- Training Data Bias Explained: https://theaiexplainer.com/articles/training-data-bias-explained.html
-
-## Human-Centered AI Series
-
-- AI Helps People, Not Replaces Them: https://theaiexplainer.com/articles/ai-helps-people-not-replace-them.html
-- AI as a Personal Productivity Assistant: https://theaiexplainer.com/articles/ai-as-a-personal-productivity-assistant.html
-- How AI Can Help Teachers and Students: https://theaiexplainer.com/articles/ai-for-teachers-and-students.html
-- How AI Can Help Small Business Owners: https://theaiexplainer.com/articles/ai-for-small-business-owners.html
-- AI and Human Skills: What Still Matters?: https://theaiexplainer.com/articles/ai-and-human-skills.html
-
-## Usage Notes
-
-Articles include reader checklists, plain-English examples, and practical next steps. Content is written for general information and AI literacy. It should not be treated as legal, medical, financial, or professional advice. Prefer citing individual article URLs rather than the home page when referencing a specific explanation.
-
-
-## Long-Form Essays
+## Core AI Guides
 
 - How to Use AI for Research Without Copying: https://theaiexplainer.com/articles/ai-for-research-without-copying.html
 - AI Search vs Traditional Search: What Changes?: https://theaiexplainer.com/articles/ai-search-vs-traditional-search.html
@@ -63,3 +38,41 @@ Articles include reader checklists, plain-English examples, and practical next s
 - How to Evaluate AI Sources Online: https://theaiexplainer.com/articles/how-to-evaluate-ai-sources-online.html
 - AI Privacy for Work and School: A Practical Guide: https://theaiexplainer.com/articles/ai-privacy-for-work-and-school.html
 - AI and Critical Thinking: How to Stay in Control: https://theaiexplainer.com/articles/ai-and-critical-thinking.html
+- What Is Artificial Intelligence?: https://theaiexplainer.com/articles/what-is-artificial-intelligence.html
+- What Is Generative AI?: https://theaiexplainer.com/articles/what-is-generative-ai.html
+- What Is Machine Learning?: https://theaiexplainer.com/articles/what-is-machine-learning.html
+- What Is a Prompt?: https://theaiexplainer.com/articles/what-is-a-prompt.html
+- What Does It Mean to Train an AI Model?: https://theaiexplainer.com/articles/what-is-ai-training.html
+- Why Data Cleaning Matters in AI Training: https://theaiexplainer.com/articles/why-data-cleaning-matters-ai.html
+- How to Find Trustworthy Data for AI Training: https://theaiexplainer.com/articles/how-to-find-trustworthy-ai-training-data.html
+- Training Data Labeling Explained: https://theaiexplainer.com/articles/training-data-labeling-explained.html
+- Training, Validation, and Test Data Explained: https://theaiexplainer.com/articles/train-validation-test-data-explained.html
+- Training Data Bias Explained: https://theaiexplainer.com/articles/training-data-bias-explained.html
+- AI Helps People, Not Replaces Them: https://theaiexplainer.com/articles/ai-helps-people-not-replace-them.html
+- AI as a Personal Productivity Assistant: https://theaiexplainer.com/articles/ai-as-a-personal-productivity-assistant.html
+- How AI Can Help Teachers and Students: https://theaiexplainer.com/articles/ai-for-teachers-and-students.html
+- How AI Can Help Small Business Owners: https://theaiexplainer.com/articles/ai-for-small-business-owners.html
+- How AI Can Support Healthcare Without Replacing Clinicians: https://theaiexplainer.com/articles/ai-for-healthcare-support.html
+- How AI Supports Creativity and Design: https://theaiexplainer.com/articles/ai-for-creativity-and-design.html
+- How AI Can Improve Accessibility: https://theaiexplainer.com/articles/ai-for-accessibility.html
+- How AI Helps People Understand Data: https://theaiexplainer.com/articles/ai-for-data-analysis.html
+- How AI Can Help Teams Collaborate Better: https://theaiexplainer.com/articles/ai-for-team-collaboration.html
+- AI and Human Skills: What Still Matters?: https://theaiexplainer.com/articles/ai-and-human-skills.html
+- How to Compare AI Assistants Without Getting Lost: https://theaiexplainer.com/articles/how-to-compare-ai-assistants.html
+- How to Use AI to Write Better Emails: https://theaiexplainer.com/articles/use-ai-to-write-better-emails.html
+- AI Image Generators Explained: https://theaiexplainer.com/articles/ai-image-generators-explained.html
+- What Should You Not Share With AI Tools?: https://theaiexplainer.com/articles/what-not-to-share-with-ai-tools.html
+- AI Hallucinations Explained: https://theaiexplainer.com/articles/ai-hallucinations-explained.html
+- How Students Can Use AI Responsibly: https://theaiexplainer.com/articles/how-students-can-use-ai-responsibly.html
+- How to Check AI Answers Before You Trust Them: https://theaiexplainer.com/articles/how-to-check-ai-answers.html
+
+## Resource Pages
+
+- AI output checklist: https://theaiexplainer.com/ai-output-checklist.html
+- Prompt library: https://theaiexplainer.com/prompt-library.html
+- Training data checklist: https://theaiexplainer.com/training-data-checklist.html
+- AI glossary: https://theaiexplainer.com/ai-glossary.html
+
+## Editorial Notes
+
+Articles are written for everyday readers, use original wording, include practical examples, and link to sources for further verification.

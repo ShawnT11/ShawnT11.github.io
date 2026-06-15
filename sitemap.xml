@@ -3,189 +3,306 @@
   <url>
     <loc>https://theaiexplainer.com/</loc>
     <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/resources.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/articles.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/ai-output-checklist.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/prompt-library.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/training-data-checklist.html</loc>
-    <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/ai-glossary.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/about.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theaiexplainer.com/contact.html</loc>
+    <loc>https://theaiexplainer.com/ai-glossary.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theaiexplainer.com/editorial-policy.html</loc>
+    <loc>https://theaiexplainer.com/ai-output-checklist.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theaiexplainer.com/privacy.html</loc>
+    <loc>https://theaiexplainer.com/articles.html</loc>
     <lastmod>2026-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://theaiexplainer.com/copyright.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-and-critical-thinking.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-and-human-skills.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-as-a-personal-productivity-assistant.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-at-work-automation-vs-augmentation.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-automation-checklist-before-you-automate.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-citation-and-source-checking.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-accessibility.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-content-creators.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-creativity-and-design.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-customer-support.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-data-analysis.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-healthcare-support.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-job-seekers.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-language-learning.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-meeting-notes.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-nonprofits.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-parents.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-project-management.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-research-without-copying.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-small-business-owners.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-for-spreadsheets.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-teachers-and-students.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-for-team-collaboration.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-hallucinations-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-helps-people-not-replace-them.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-image-generators-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-privacy-for-work-and-school.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/ai-risk-assessment-for-everyday-users.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/ai-search-vs-traditional-search.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-students-can-use-ai-responsibly.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-to-build-an-ai-learning-plan.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-to-check-ai-answers.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-to-compare-ai-assistants.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-to-evaluate-ai-sources-online.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/how-to-find-trustworthy-ai-training-data.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/how-to-write-better-ai-prompts.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/retrieval-augmented-generation-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/articles/small-team-ai-policy.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/train-validation-test-data-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/training-data-bias-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/training-data-labeling-explained.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/use-ai-to-write-better-emails.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-is-a-prompt.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-is-ai-training.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-is-artificial-intelligence.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-is-generative-ai.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-is-machine-learning.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/what-not-to-share-with-ai-tools.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theaiexplainer.com/articles/why-data-cleaning-matters-ai.html</loc>
     <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/contact.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/copyright.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/editorial-policy.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/privacy.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/prompt-library.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/resources.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theaiexplainer.com/training-data-checklist.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
