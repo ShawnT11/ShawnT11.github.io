@@ -15,6 +15,14 @@ Sitemap: https://theaiexplainer.com/sitemap.xml
 - Privacy policy: https://theaiexplainer.com/privacy.html
 - Copyright: https://theaiexplainer.com/copyright.html
 
+## Practical Resources
+
+- AI tools and checklists: https://theaiexplainer.com/resources.html
+- AI Output Checker: https://theaiexplainer.com/ai-output-checklist.html
+- AI Prompt Library: https://theaiexplainer.com/prompt-library.html
+- Training Data Quality Checklist: https://theaiexplainer.com/training-data-checklist.html
+- Plain-English AI Glossary: https://theaiexplainer.com/ai-glossary.html
+
 ## Recommended Starter Articles
 
 - What Is Artificial Intelligence?: https://theaiexplainer.com/articles/what-is-artificial-intelligence.html
