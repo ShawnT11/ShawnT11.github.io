@@ -7,9 +7,20 @@ The AI Explainer is a plain-English AI literacy site for readers who want practi
 - Home: https://theaiexplainer.com/
 - Articles: https://theaiexplainer.com/articles.html
 - Resources and checklists: https://theaiexplainer.com/resources.html
+- AI basics learning path: https://theaiexplainer.com/ai-basics-hub.html
+- AI at work learning path: https://theaiexplainer.com/ai-at-work-hub.html
+- AI safety and verification path: https://theaiexplainer.com/ai-safety-hub.html
+- Training data learning path: https://theaiexplainer.com/training-data-hub.html
 - Editorial policy: https://theaiexplainer.com/editorial-policy.html
 - About: https://theaiexplainer.com/about.html
 - Privacy policy: https://theaiexplainer.com/privacy.html
+
+## Learning Paths
+
+- AI Basics Learning Path: https://theaiexplainer.com/ai-basics-hub.html
+- AI at Work Learning Path: https://theaiexplainer.com/ai-at-work-hub.html
+- AI Safety and Verification Learning Path: https://theaiexplainer.com/ai-safety-hub.html
+- Training Data Learning Path: https://theaiexplainer.com/training-data-hub.html
 
 ## Practical Workflow Guides
 
