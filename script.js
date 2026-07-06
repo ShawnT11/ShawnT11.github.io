@@ -1,51 +1,20 @@
-const menuButton = document.querySelector(".menu-button");
-const siteNav = document.querySelector(".site-nav");
-const filterButtons = document.querySelectorAll(".filter-chip");
-const searchInput = document.querySelector("#article-search");
-const articleCards = document.querySelectorAll(".article-card");
-const emptyState = document.querySelector("#empty-state");
+const navToggle = document.querySelector(".nav-toggle");
+const mainNav = document.querySelector(".main-nav");
 
-let activeFilter = "all";
-let query = "";
+if (navToggle && mainNav) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("open");
+    document.body.classList.toggle("nav-open", isOpen);
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-function normalize(value) {
-  return value.trim().toLowerCase();
-}
-
-function applyFilters() {
-  let visibleCount = 0;
-
-  articleCards.forEach((card) => {
-    const topic = card.dataset.topic;
-    const title = normalize(card.dataset.title || "");
-    const text = normalize(card.textContent || "");
-    const matchesTopic = activeFilter === "all" || topic === activeFilter;
-    const matchesQuery = !query || title.includes(query) || text.includes(query);
-    const isVisible = matchesTopic && matchesQuery;
-    card.classList.toggle("hidden", !isVisible);
-    if (isVisible) {
-      visibleCount += 1;
+  mainNav.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      mainNav.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
     }
   });
-
-  emptyState.classList.toggle("hidden", visibleCount > 0);
 }
 
-menuButton.addEventListener("click", () => {
-  const isOpen = siteNav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-});
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    filterButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    activeFilter = button.dataset.filter;
-    applyFilters();
-  });
-});
-
-searchInput.addEventListener("input", (event) => {
-  query = normalize(event.target.value);
-  applyFilters();
-});
