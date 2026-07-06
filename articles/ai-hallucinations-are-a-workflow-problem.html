@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Hallucinations Are a Workflow Problem | The AI Explainer</title>
+    <meta
+      name="description"
+      content="An essay explaining AI hallucinations as a workflow risk and showing how review habits, source checks, and task design reduce harm."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-title" href="../index.html">The AI <span>Explainer</span></a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../index.html" class="is-active">Articles</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="article-page">
+      <article class="article-main">
+        <header>
+          <a class="back-link" href="../index.html">&larr; Back to all articles</a>
+          <p class="label">Hallucinations</p>
+          <h1>AI Hallucinations Are a Workflow Problem</h1>
+          <p class="article-dek">
+            A hallucination is not only a strange model behavior. It is a failure mode in the surrounding workflow: a
+            confident answer reaches a person, document, or decision before the right checks happen.
+          </p>
+          <div class="article-meta">
+            <span>The AI Explainer editorial</span>
+            <span>Updated July 2026</span>
+            <span>8 min read</span>
+          </div>
+        </header>
+
+        <div class="brief-box" aria-label="Article summary">
+          <div>
+            <strong>Problem</strong>
+            <span>Fluent answers can contain invented facts, links, quotes, or details.</span>
+          </div>
+          <div>
+            <strong>Response</strong>
+            <span>Design review steps around claim checking, not around how polished the answer sounds.</span>
+          </div>
+          <div>
+            <strong>Rule</strong>
+            <span>The model can suggest. The workflow must verify.</span>
+          </div>
+        </div>
+
+        <section>
+          <h2>Why hallucinations are hard to catch</h2>
+          <p>
+            People often expect errors to look messy. AI errors are different. They can arrive inside a polished
+            paragraph with clean grammar, plausible structure, and a tone that sounds certain. That makes the mistake
+            harder to notice than a typo or broken sentence.
+          </p>
+          <p>
+            The danger is not that every output is wrong. The danger is that the output does not always tell you which
+            parts are grounded and which parts are guesses. A sentence can be useful, approximate, outdated, or invented
+            without changing its voice.
+          </p>
+        </section>
+
+        <section>
+          <h2>Do not make the model grade itself</h2>
+          <p>
+            Asking a model whether its own answer is accurate may catch obvious problems, but it is not enough. The same
+            system that produced the weak claim may produce a confident defense of it. For important work, verification
+            has to point outside the model.
+          </p>
+          <ul>
+            <li>Check quoted language against the original source.</li>
+            <li>Open links instead of trusting their titles.</li>
+            <li>Confirm product behavior in current documentation.</li>
+            <li>Test code, formulas, and instructions in a controlled environment.</li>
+          </ul>
+        </section>
+
+        <blockquote>
+          The safest AI workflow assumes the answer may be useful and still not ready.
+        </blockquote>
+
+        <section>
+          <h2>Separate three kinds of output</h2>
+          <p>
+            Some output is creative material: names, angles, examples, headlines, and first drafts. Some output is
+            structured help: tables, outlines, checklists, and summaries. Some output is factual claim: dates, rules,
+            statistics, quotes, and technical specifics.
+          </p>
+          <p>
+            These categories need different review. Creative material needs taste. Structured help needs completeness.
+            Factual claims need evidence.
+          </p>
+        </section>
+
+        <section>
+          <h2>Make verification part of the prompt</h2>
+          <div class="step-panel">
+            <h3>Ask for uncertainty</h3>
+            <p>
+              Tell the model to mark assumptions, unknowns, and claims that require source checking. This will not make
+              the answer automatically true, but it improves the shape of the review.
+            </p>
+          </div>
+          <div class="step-panel">
+            <h3>Ask for a checking list</h3>
+            <p>
+              After a draft, ask which facts need verification before publication. Then do the checking yourself.
+            </p>
+          </div>
+          <div class="step-panel">
+            <h3>Ask for weaker wording</h3>
+            <p>
+              If a claim is uncertain, rewrite it with the right level of caution instead of pretending the evidence is
+              stronger than it is.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Use AI where errors are visible</h2>
+          <p>
+            The easiest place to use AI safely is where you can see the quality of the result. If you know the subject,
+            you can spot missing context. If the task is a draft, you can edit. If the output is a table built from your
+            own notes, you can compare it to the source material.
+          </p>
+          <p>
+            The hardest place is where you ask the model to replace knowledge you do not have. That is when a
+            hallucination can become invisible until it causes damage.
+          </p>
+        </section>
+
+        <nav class="essay-nav" aria-label="Article navigation">
+          <a href="../index.html">All articles</a>
+          <a href="use-ai-at-work-without-sounding-generic.html">Next essay</a>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      The AI Explainer publishes original essays about artificial intelligence.
+      <a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a>
+    </footer>
+  </body>
+</html>
