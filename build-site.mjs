@@ -6,7 +6,7 @@ const baseUrl = "https://theaiexplainer.com";
 const lastmod = "2026-07-20";
 const reviewed = "July 20, 2026";
 const adClient = "ca-pub-3430860743061587";
-const assetVersion = "20260722-2";
+const assetVersion = "20260722-3";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
@@ -65,6 +65,9 @@ function head({ title, description, relativePath, type = "website", article }) {
     <meta property="og:type" content="${type}" />
     <meta property="og:url" content="${canonical}" />
     <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${relativePath.includes("/") ? "../" : ""}styles.css?v=${assetVersion}" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}" crossorigin="anonymous"></script>
     <script defer src="${relativePath.includes("/") ? "../" : ""}script.js?v=${assetVersion}"></script>
@@ -1462,7 +1465,8 @@ const css = String.raw`
   --max: 1160px;
   --measure: 760px;
   --gutter: clamp(18px, 4vw, 32px);
-  --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 *,
@@ -1577,7 +1581,8 @@ textarea {
   align-items: center;
   gap: 11px;
   color: var(--ink);
-  font-weight: 850;
+  font-family: var(--font-display);
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -1590,7 +1595,7 @@ textarea {
   background: linear-gradient(135deg, #0f766e, #2563eb);
   color: #fff;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 800;
   box-shadow: var(--shadow-sm);
 }
 
@@ -1606,7 +1611,7 @@ textarea {
   border-radius: var(--radius);
   color: var(--ink-soft);
   font-size: 14px;
-  font-weight: 760;
+  font-weight: 700;
 }
 
 .site-nav a[aria-current="page"],
@@ -1627,7 +1632,7 @@ textarea {
   margin-bottom: 12px;
   color: var(--brand-dark);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.14em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -1638,8 +1643,9 @@ h2,
 h3 {
   margin: 0;
   color: var(--ink);
-  font-weight: 850;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1.04;
 }
 
@@ -1678,7 +1684,7 @@ h1 {
   border-radius: var(--radius);
   background: var(--brand);
   color: #fff;
-  font-weight: 850;
+  font-weight: 800;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
 }
@@ -1745,7 +1751,7 @@ h1 {
   display: block;
   color: var(--rose);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -1825,7 +1831,7 @@ h1 {
 .content-section a,
 .page-content a {
   color: var(--brand-dark);
-  font-weight: 850;
+  font-weight: 800;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
@@ -1888,7 +1894,7 @@ h1 {
 .tool-card span {
   color: var(--amber);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .page-hero {
@@ -1928,7 +1934,7 @@ h1 {
   display: inline-flex;
   margin-bottom: 30px;
   color: var(--brand-dark);
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .article-header h1 {
@@ -1969,7 +1975,7 @@ h1 {
 .key-points span {
   padding: 16px;
   color: var(--brand-dark);
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .key-points span + span {
@@ -2008,7 +2014,7 @@ h1 {
   border-radius: var(--radius);
   background: #eff6ff;
   color: #1e3a8a;
-  font-weight: 760;
+  font-weight: 700;
 }
 
 .takeaway {
@@ -2051,20 +2057,20 @@ h1 {
 .tool-panel legend {
   margin-bottom: 8px;
   color: var(--ink);
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .tool-panel label {
   display: grid;
   gap: 8px;
   color: var(--ink);
-  font-weight: 780;
+  font-weight: 700;
 }
 
 .tool-panel label:has(input[type="checkbox"]) {
   grid-template-columns: auto 1fr;
   align-items: start;
-  font-weight: 680;
+  font-weight: 600;
 }
 
 input,
