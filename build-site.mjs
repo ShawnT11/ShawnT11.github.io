@@ -6,7 +6,7 @@ const baseUrl = "https://theaiexplainer.com";
 const lastmod = "2026-07-20";
 const reviewed = "July 20, 2026";
 const adClient = "ca-pub-3430860743061587";
-const assetVersion = "20260722-3";
+const assetVersion = "20260722-4";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
@@ -59,6 +59,7 @@ function head({ title, description, relativePath, type = "website", article }) {
     <meta name="description" content="${description}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="google-adsense-account" content="${adClient}" />
+    <meta name="theme-color" content="#0f766e" />
     <link rel="canonical" href="${canonical}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
@@ -67,7 +68,7 @@ function head({ title, description, relativePath, type = "website", article }) {
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${relativePath.includes("/") ? "../" : ""}styles.css?v=${assetVersion}" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}" crossorigin="anonymous"></script>
     <script defer src="${relativePath.includes("/") ? "../" : ""}script.js?v=${assetVersion}"></script>
@@ -118,6 +119,7 @@ const articles = [
     slug: "what-is-artificial-intelligence",
     category: "AI Basics",
     title: "What Is Artificial Intelligence? A Plain-English Guide",
+    seoTitle: "What Is Artificial Intelligence? | The AI Explainer",
     description:
       "A clear beginner explanation of artificial intelligence, how it differs from normal software, and where human judgment still matters.",
     read: "8 min read",
@@ -751,6 +753,7 @@ const articles = [
     slug: "ai-meeting-notes-guide",
     category: "AI at Work",
     title: "How to Use AI for Meeting Notes Without Creating Confusion",
+    seoTitle: "AI Meeting Notes Guide | The AI Explainer",
     description:
       "A practical guide to using AI for agendas, summaries, decisions, and action items while avoiding invented owners or missing context.",
     read: "8 min read",
@@ -1067,8 +1070,9 @@ function renderArticle(article) {
     .filter((item) => item.slug !== article.slug && item.category === article.category)
     .slice(0, 2);
   const fallbackRelated = related.length ? related : articles.filter((item) => item.slug !== article.slug).slice(0, 2);
+  const pageTitle = article.seoTitle || `${article.title} | The AI Explainer`;
   return `${head({
-    title: `${article.title} | The AI Explainer`,
+    title: pageTitle,
     description: article.description,
     relativePath: `articles/${article.slug}.html`,
     type: "article",
@@ -1444,29 +1448,32 @@ ${paths
 const css = String.raw`
 :root {
   color-scheme: light;
-  --bg: #f8fafc;
-  --bg-strong: #eef6f7;
+  --bg: #e9f7f4;
+  --bg-strong: #d8f0ff;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --ink: #0f172a;
-  --ink-soft: #334155;
-  --muted: #64748b;
-  --line: #dbe4ee;
-  --line-strong: #cbd5e1;
+  --surface-2: #edf8f7;
+  --ink: #081421;
+  --ink-soft: #274052;
+  --muted: #5f7884;
+  --line: #c7ddd9;
+  --line-strong: #adcac8;
   --brand: #0f766e;
-  --brand-dark: #115e59;
-  --blue: #2563eb;
-  --amber: #d97706;
-  --rose: #be123c;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 26px 70px rgba(15, 23, 42, 0.12);
+  --brand-dark: #0b4f49;
+  --blue: #315fda;
+  --blue-deep: #1d3b8f;
+  --amber: #c76a11;
+  --rose: #a91e49;
+  --theme-wash: #c7f2ea;
+  --theme-lilac: #dce6ff;
+  --shadow-sm: 0 1px 2px rgba(8, 20, 33, 0.07);
+  --shadow-md: 0 16px 40px rgba(8, 20, 33, 0.1);
+  --shadow-lg: 0 26px 70px rgba(8, 20, 33, 0.14);
   --radius: 8px;
   --max: 1160px;
   --measure: 760px;
   --gutter: clamp(18px, 4vw, 32px);
   --font: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 *,
@@ -1485,7 +1492,9 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    linear-gradient(180deg, rgba(238, 246, 247, 0.95) 0, rgba(248, 250, 252, 0) 440px),
+    radial-gradient(circle at 12% 8%, rgba(21, 190, 166, 0.22), transparent 34rem),
+    radial-gradient(circle at 82% 12%, rgba(49, 95, 218, 0.18), transparent 32rem),
+    linear-gradient(180deg, #e8f7f4 0, #f1f8ff 46%, #eaf6f0 100%),
     var(--bg);
   color: var(--ink);
   font-family: var(--font);
@@ -1495,7 +1504,7 @@ body {
 }
 
 body::selection {
-  background: rgba(15, 118, 110, 0.18);
+  background: rgba(49, 95, 218, 0.2);
 }
 
 a {
@@ -1563,8 +1572,8 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(203, 213, 225, 0.72);
-  background: rgba(248, 250, 252, 0.86);
+  border-bottom: 1px solid rgba(120, 169, 163, 0.38);
+  background: rgba(232, 247, 244, 0.86);
   backdrop-filter: blur(18px);
 }
 
@@ -1592,7 +1601,7 @@ textarea {
   width: 38px;
   height: 38px;
   border-radius: var(--radius);
-  background: linear-gradient(135deg, #0f766e, #2563eb);
+  background: linear-gradient(135deg, var(--brand), var(--blue));
   color: #fff;
   font-size: 13px;
   font-weight: 800;
@@ -1616,7 +1625,7 @@ textarea {
 
 .site-nav a[aria-current="page"],
 .site-nav a:hover {
-  background: #e6f3f2;
+  background: rgba(15, 118, 110, 0.11);
   color: var(--brand-dark);
 }
 
@@ -1696,12 +1705,12 @@ h1 {
 }
 
 .button.secondary {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.66);
   color: var(--brand-dark);
 }
 
 .button.secondary:hover {
-  background: #e6f3f2;
+  background: rgba(199, 242, 234, 0.74);
   color: var(--brand-dark);
 }
 
@@ -1719,9 +1728,9 @@ h1 {
   border: 1px solid rgba(15, 118, 110, 0.24);
   border-radius: 28px;
   background:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(37, 99, 235, 0.04)),
-    repeating-linear-gradient(90deg, rgba(203, 213, 225, 0.5) 0 1px, transparent 1px 58px),
-    repeating-linear-gradient(180deg, rgba(203, 213, 225, 0.38) 0 1px, transparent 1px 58px);
+    linear-gradient(135deg, rgba(15, 118, 110, 0.2), rgba(49, 95, 218, 0.14)),
+    repeating-linear-gradient(90deg, rgba(93, 140, 151, 0.38) 0 1px, transparent 1px 58px),
+    repeating-linear-gradient(180deg, rgba(93, 140, 151, 0.3) 0 1px, transparent 1px 58px);
 }
 
 .visual-card {
@@ -1731,7 +1740,7 @@ h1 {
   padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow-md);
 }
 
@@ -1771,7 +1780,7 @@ h1 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1807,7 +1816,9 @@ h1 {
   width: 100%;
   max-width: none;
   padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2));
-  background: linear-gradient(180deg, #eef6f7, #f8fafc);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(49, 95, 218, 0.1)),
+    linear-gradient(180deg, #dff4ef, #e8f2ff);
 }
 
 .section-heading {
@@ -1856,7 +1867,7 @@ h1 {
 .related-guides {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.86);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1969,7 +1980,7 @@ h1 {
   gap: 0;
   margin: 28px 0 36px;
   overflow: hidden;
-  background: #f8fcfb;
+  background: linear-gradient(135deg, rgba(199, 242, 234, 0.52), rgba(220, 230, 255, 0.42));
 }
 
 .key-points span {
@@ -2012,7 +2023,7 @@ h1 {
   border: 1px solid rgba(37, 99, 235, 0.22);
   border-left: 4px solid var(--blue);
   border-radius: var(--radius);
-  background: #eff6ff;
+  background: #eef4ff;
   color: #1e3a8a;
   font-weight: 700;
 }
@@ -2021,7 +2032,7 @@ h1 {
   margin-top: 40px;
   padding: 24px;
   border-color: rgba(217, 119, 6, 0.32);
-  background: #fffbeb;
+  background: #fff5df;
 }
 
 .takeaway p {
@@ -2115,7 +2126,7 @@ input[type="checkbox"] {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #f8fafc;
+  background: #f3faf9;
   color: var(--ink);
   white-space: pre-wrap;
 }
@@ -2192,8 +2203,12 @@ input[type="checkbox"] {
   }
 
   h1 {
-    max-width: 11ch;
-    font-size: clamp(2.45rem, 11vw, 3.3rem);
+    max-width: 10ch;
+    font-size: clamp(2.25rem, 9vw, 2.85rem);
+  }
+
+  .hero h1 {
+    max-width: 9ch;
   }
 
   .hero-copy > p:not(.eyebrow),
