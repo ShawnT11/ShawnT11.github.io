@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Privacy Risk Checker | The AI Explainer</title>
+    <meta name="description" content="A simple checklist tool that helps you decide whether text is safe to paste into an AI assistant." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="google-adsense-account" content="ca-pub-3430860743061587" />
+    <link rel="canonical" href="https://theaiexplainer.com/tools/ai-privacy-risk-checker.html" />
+    <meta property="og:title" content="AI Privacy Risk Checker | The AI Explainer" />
+    <meta property="og:description" content="A simple checklist tool that helps you decide whether text is safe to paste into an AI assistant." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://theaiexplainer.com/tools/ai-privacy-risk-checker.html" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
+    <script defer src="../script.js"></script>
+    
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="skip-link" href="#main">Skip to content</a>
+      <div class="header-inner">
+        <a class="brand" href="../index.html" aria-label="The AI Explainer home">
+          <span class="brand-mark" aria-hidden="true">AI</span>
+          <span>The AI Explainer</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../articles.html">Guides</a>
+          <a href="../tools.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="tool-layout">
+      <section class="page-hero narrow">
+        <p class="eyebrow">Free AI tool</p>
+        <h1>AI Privacy Risk Checker</h1>
+        <p>Select the kinds of information you plan to include. The checker gives a practical risk level and safer next steps. It runs in your browser and does not send your selections anywhere.</p>
+      </section>
+      <form class="tool-panel" data-tool="privacy-checker">
+        <fieldset>
+          <legend>What does your prompt include?</legend>
+          <label><input type="checkbox" value="4" data-reason="Personal identifiers should usually be removed or replaced." /> Names, emails, phone numbers, addresses, or IDs</label>
+          <label><input type="checkbox" value="5" data-reason="Customer, employee, student, patient, or financial data needs approved handling." /> Customer, employee, student, patient, or financial records</label>
+          <label><input type="checkbox" value="5" data-reason="Secrets should not be pasted into general AI tools." /> Passwords, API keys, tokens, or security details</label>
+          <label><input type="checkbox" value="4" data-reason="Private contracts and legal material need policy review." /> Contracts, legal drafts, or confidential negotiations</label>
+          <label><input type="checkbox" value="3" data-reason="Internal strategy and pricing may reveal business-sensitive context." /> Internal strategy, pricing, sales pipeline, or unreleased plans</label>
+          <label><input type="checkbox" value="1" data-reason="Public information is usually lower risk, but facts still need checking." /> Public information or fictional sample data only</label>
+        </fieldset>
+        <button class="button" type="button" data-action="privacy-check">Check risk</button>
+        <output class="tool-output" data-output="privacy-result">Choose the information types above, then run the checker.</output>
+      </form>
+      <section class="content-section">
+        <h2>How to use the result</h2>
+        <p>This tool is a practical guide, not legal advice. If your prompt includes regulated, confidential, or customer data, use an approved tool and follow your organization policy before pasting anything.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>The AI Explainer</strong>
+          <p>Plain-English AI guides for everyday work, study, privacy, and better judgment.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="../about.html">About</a>
+          <a href="../editorial-policy.html">Editorial Policy</a>
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms</a>
+          <a href="../copyright.html">Copyright</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

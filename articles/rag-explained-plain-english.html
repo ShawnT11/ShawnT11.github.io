@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAG Explained in Plain English | The AI Explainer</title>
+    <meta name="description" content="A beginner explanation of retrieval-augmented generation, why it helps AI answer with documents, and what can still go wrong." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="google-adsense-account" content="ca-pub-3430860743061587" />
+    <link rel="canonical" href="https://theaiexplainer.com/articles/rag-explained-plain-english.html" />
+    <meta property="og:title" content="RAG Explained in Plain English | The AI Explainer" />
+    <meta property="og:description" content="A beginner explanation of retrieval-augmented generation, why it helps AI answer with documents, and what can still go wrong." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://theaiexplainer.com/articles/rag-explained-plain-english.html" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
+    <script defer src="../script.js"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"RAG Explained in Plain English","description":"A beginner explanation of retrieval-augmented generation, why it helps AI answer with documents, and what can still go wrong.","dateModified":"2026-07-20","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/rag-explained-plain-english.html"}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="skip-link" href="#main">Skip to content</a>
+      <div class="header-inner">
+        <a class="brand" href="../index.html" aria-label="The AI Explainer home">
+          <span class="brand-mark" aria-hidden="true">AI</span>
+          <span>The AI Explainer</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../articles.html" aria-current="page">Guides</a>
+          <a href="../tools.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="article-layout">
+      <article class="article-main">
+        <a class="back-link" href="../articles.html">Back to all guides</a>
+        <header class="article-header">
+          <p class="eyebrow">AI Basics</p>
+          <h1>RAG Explained in Plain English</h1>
+          <p class="article-dek">RAG stands for retrieval-augmented generation. It is a way to help an AI answer using external information, such as documents, help articles, policies, notes, or a database.</p>
+          <div class="article-meta">
+            <span>The AI Explainer Editorial Desk</span>
+            <span>Reviewed July 20, 2026</span>
+            <span>8 min read</span>
+          </div>
+        </header>
+        <aside class="key-points" aria-label="Key points">
+          <span>Retrieves context</span>
+          <span>Generates an answer</span>
+          <span>Still needs source checks</span>
+        </aside>
+        <section class="content-section">
+          <h2>The short answer</h2>
+          <p>RAG combines two steps. First, the system retrieves relevant information from a source you provide or connect. Second, a generative AI model uses that retrieved information to answer the question. Instead of asking the model to rely only on what it learned during training, RAG gives it current or private context at the moment of the request.</p>
+        </section>
+        <section class="content-section">
+          <h2>A simple workplace example</h2>
+          <p>Suppose a company has a 60-page employee handbook. A normal chatbot may not know the handbook. A RAG system can search the handbook for passages about leave policy, send the relevant passages to the model, and ask the model to answer in plain English.</p>
+        <p>This can be useful because the answer is grounded in a specific document. It is also easier to show the passages used, which helps reviewers check the response.</p>
+        </section>
+        <section class="content-section">
+          <h2>Why RAG is not automatic truth</h2>
+          <p>RAG improves grounding, but it does not remove every risk. The retrieval step can pull the wrong section. The source document can be outdated. The model can summarize a passage too broadly. The answer can miss exceptions hidden elsewhere in the document.</p>
+        <p>For important use cases, the system should show sources, timestamps, document owners, and confidence boundaries. A good answer should make it easy to inspect where it came from.</p>
+        </section>
+        <section class="content-section">
+          <h2>When RAG is useful</h2>
+          <ul>
+          <li>Answering questions from company policies, product docs, or support content.</li>
+          <li>Summarizing a collection of notes or reports.</li>
+          <li>Helping employees find internal knowledge faster.</li>
+          <li>Reducing outdated answers by using current documents.</li>
+        </ul>
+        </section>
+        <section class="content-section">
+          <h2>Questions to ask before trusting a RAG answer</h2>
+          <p>Ask what sources were searched, whether the answer cites exact passages, when those sources were updated, and whether the system ignored any documents. If the tool cannot show its sources, treat the answer as a helpful lead, not a final answer.</p>
+        </section>
+        <section class="content-section">
+          <h2>How to apply this guide</h2>
+          <p>Use this concept when you are trying to understand what an AI tool can reasonably do before you rely on it. A basic definition is only useful when it helps you decide what to try, what to check, and what not to assume.</p>
+          <ul>
+            <li>Write the task in one sentence before opening an AI tool.</li>
+            <li>Decide which parts need human review: retrieves context, generates an answer, still needs source checks.</li>
+            <li>Remove private or unnecessary context before prompting.</li>
+            <li>Check whether the final output changes a fact, promise, number, date, or decision.</li>
+          </ul>
+          <p>The safest habit is to translate the concept into a simple workflow question: what information goes in, what output comes out, and who reviews the result?</p>
+        </section>
+        <section class="content-section">
+          <h2>A safer prompt to try</h2>
+          <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
+          <div class="prompt-box">Explain this AI concept for a non-technical reader. Use one workplace example, one everyday example, and one warning about what people often misunderstand. End with three facts I should verify before relying on a tool that uses this concept.</div>
+        </section>
+        <section class="takeaway">
+          <h2>Best takeaway</h2>
+          <p>RAG helps AI answer from selected information, but source quality, retrieval quality, and human review still decide whether the answer is trustworthy.</p>
+        </section>
+        <nav class="related-guides" aria-label="Related guides">
+          <h2>Read next</h2>
+          <a href="what-is-artificial-intelligence.html">What Is Artificial Intelligence? A Plain-English Guide</a>
+          <a href="what-is-generative-ai.html">What Is Generative AI?</a>
+        </nav>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>The AI Explainer</strong>
+          <p>Plain-English AI guides for everyday work, study, privacy, and better judgment.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="../about.html">About</a>
+          <a href="../editorial-policy.html">Editorial Policy</a>
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms</a>
+          <a href="../copyright.html">Copyright</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
