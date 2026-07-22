@@ -6,6 +6,7 @@ const baseUrl = "https://theaiexplainer.com";
 const lastmod = "2026-07-20";
 const reviewed = "July 20, 2026";
 const adClient = "ca-pub-3430860743061587";
+const assetVersion = "20260722-2";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
@@ -64,9 +65,9 @@ function head({ title, description, relativePath, type = "website", article }) {
     <meta property="og:type" content="${type}" />
     <meta property="og:url" content="${canonical}" />
     <meta name="twitter:card" content="summary" />
-    <link rel="stylesheet" href="${relativePath.includes("/") ? "../" : ""}styles.css" />
+    <link rel="stylesheet" href="${relativePath.includes("/") ? "../" : ""}styles.css?v=${assetVersion}" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}" crossorigin="anonymous"></script>
-    <script defer src="${relativePath.includes("/") ? "../" : ""}script.js"></script>
+    <script defer src="${relativePath.includes("/") ? "../" : ""}script.js?v=${assetVersion}"></script>
     ${jsonLd}
   </head>`;
 }
