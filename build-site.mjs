@@ -3,10 +3,11 @@ import path from "node:path";
 
 const root = process.cwd();
 const baseUrl = "https://theaiexplainer.com";
-const lastmod = "2026-07-20";
-const reviewed = "July 20, 2026";
+const lastmod = "2026-08-02";
+const reviewed = "August 2, 2026";
 const adClient = "ca-pub-3430860743061587";
-const assetVersion = "20260722-4";
+const contactEmail = "hello@theaiexplainer.com";
+const assetVersion = "20260802-1";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
@@ -27,8 +28,11 @@ function canonicalPath(relativePath) {
   return `/${relativePath.replace(/\\/g, "/")}`;
 }
 
-function head({ title, description, relativePath, type = "website", article }) {
+function head({ title, description, relativePath, type = "website", article, allowAds = false }) {
   const canonical = `${baseUrl}${canonicalPath(relativePath)}`;
+  const adScript = allowAds
+    ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}" crossorigin="anonymous"></script>`
+    : "";
   const jsonLd = article
     ? `<script type="application/ld+json">${escapeJson({
         "@context": "https://schema.org",
@@ -70,7 +74,7 @@ function head({ title, description, relativePath, type = "website", article }) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${relativePath.includes("/") ? "../" : ""}styles.css?v=${assetVersion}" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}" crossorigin="anonymous"></script>
+    ${adScript}
     <script defer src="${relativePath.includes("/") ? "../" : ""}script.js?v=${assetVersion}"></script>
     ${jsonLd}
   </head>`;
@@ -119,7 +123,6 @@ const articles = [
     slug: "what-is-artificial-intelligence",
     category: "AI Basics",
     title: "What Is Artificial Intelligence? A Plain-English Guide",
-    seoTitle: "What Is Artificial Intelligence? | The AI Explainer",
     description:
       "A clear beginner explanation of artificial intelligence, how it differs from normal software, and where human judgment still matters.",
     read: "8 min read",
@@ -753,7 +756,6 @@ const articles = [
     slug: "ai-meeting-notes-guide",
     category: "AI at Work",
     title: "How to Use AI for Meeting Notes Without Creating Confusion",
-    seoTitle: "AI Meeting Notes Guide | The AI Explainer",
     description:
       "A practical guide to using AI for agendas, summaries, decisions, and action items while avoiding invented owners or missing context.",
     read: "8 min read",
@@ -857,6 +859,240 @@ const articles = [
   },
 ];
 
+const trustedSourcesByCategory = {
+  "AI Basics": [
+    ["NIST AI Risk Management Framework", "https://www.nist.gov/itl/ai-risk-management-framework"],
+    ["OECD AI Principles", "https://oecd.ai/en/ai-principles"],
+  ],
+  "AI at Work": [
+    ["NIST AI Risk Management Framework", "https://www.nist.gov/itl/ai-risk-management-framework"],
+    ["Google Search guidance on helpful content", "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"],
+  ],
+  Privacy: [
+    ["FTC artificial intelligence topic page", "https://www.ftc.gov/industry/technology/artificial-intelligence"],
+    ["FTC guidance on AI privacy commitments", "https://www.ftc.gov/policy/advocacy-research/tech-at-ftc/2024/01/ai-companies-uphold-your-privacy-confidentiality-commitments"],
+  ],
+  Safety: [
+    ["NIST AI Risk Management Framework", "https://www.nist.gov/itl/ai-risk-management-framework"],
+    ["Google Search guidance on AI-generated content", "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"],
+  ],
+  Prompts: [
+    ["NIST AI Risk Management Framework", "https://www.nist.gov/itl/ai-risk-management-framework"],
+    ["Google Search guidance on AI-generated content", "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"],
+  ],
+  Study: [
+    ["Google Search guidance on AI-generated content", "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"],
+    ["Google Search guidance on helpful content", "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"],
+  ],
+  "AI Tools": [
+    ["FTC artificial intelligence topic page", "https://www.ftc.gov/industry/technology/artificial-intelligence"],
+    ["NIST AI Risk Management Framework", "https://www.nist.gov/itl/ai-risk-management-framework"],
+  ],
+};
+
+const articleEnhancements = {
+  "what-is-artificial-intelligence": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "Worked example: an AI support sorter",
+        body: `<p>Imagine a small shop receives 200 support messages a week. A normal rule-based system can sort any email that contains the word "refund" into a refund folder. An AI system can go further. It may recognize that "my order arrived broken" is probably a replacement or refund issue even if the word refund never appears.</p>
+        <p>That is useful, but the system still needs a review process. A customer who writes "I was charged twice and my delivery is missing" may belong in two queues. If the AI forces the message into only one category, the team may miss the billing issue. The practical lesson is that AI classification works best when a person can inspect uncertain or high-impact cases.</p>`,
+      },
+      {
+        heading: "Questions a careful reader should ask",
+        body: `<ul>
+          <li>What input did the AI receive, and was any private data included?</li>
+          <li>What output did it produce: a draft, a score, a label, or an action?</li>
+          <li>Who checks mistakes before they affect a customer, student, patient, employee, or public claim?</li>
+          <li>Can the user see why the result was suggested, or is it only a black-box answer?</li>
+        </ul>`,
+      },
+    ],
+  },
+  "what-is-generative-ai": {
+    read: "10 min read",
+    sections: [
+      {
+        heading: "Before-and-after prompt example",
+        body: `<p>A risky prompt gives the model too much private material and too little direction: "Here is the whole customer thread. Reply." A better prompt is narrower: "Draft a polite delay update for a customer. Say the package is delayed, give a revised delivery window, avoid refund promises, and leave placeholders for order number and name."</p>
+        <p>The second version is safer because it describes the communication job without exposing unnecessary records. It also tells the model what not to add. That matters because generative AI often tries to be helpful by filling gaps, and those invented details can become real promises if a person sends the draft without review.</p>`,
+      },
+      {
+        heading: "Three review passes before using output",
+        body: `<ol>
+          <li><strong>Fact pass:</strong> check names, dates, numbers, links, product details, and any current information.</li>
+          <li><strong>Privacy pass:</strong> remove details that the final reader does not need to see.</li>
+          <li><strong>Voice pass:</strong> edit generic wording so the final answer sounds like a real person or team.</li>
+        </ol>`,
+      },
+    ],
+  },
+  "large-language-models-explained": {
+    read: "12 min read",
+    sections: [
+      {
+        heading: "Why context can fail in ordinary work",
+        body: `<p>Suppose you paste a long policy document and ask for the vacation rule. The answer may be correct if the relevant paragraph is clear and nearby. It may be wrong if the document has exceptions, old sections, tables, or later updates that conflict with the first paragraph retrieved by the tool.</p>
+        <p>This is why long context is not the same as reliable context. A careful workflow asks the model to identify the exact source section it used, then a person checks whether another section changes the answer. For policies, contracts, school rules, and medical or financial material, source checking matters more than fluent wording.</p>`,
+      },
+      {
+        heading: "A practical LLM checklist",
+        body: `<ul>
+          <li>Put the task first, before background material.</li>
+          <li>Tell the model what source text it may use.</li>
+          <li>Ask it to separate facts from assumptions.</li>
+          <li>Ask for "not stated" when the source does not contain an answer.</li>
+          <li>Verify important claims outside the model.</li>
+        </ul>`,
+      },
+    ],
+  },
+  "rag-explained-plain-english": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "What to inspect in a RAG answer",
+        body: `<p>A good RAG answer should make the source visible. If a tool says "employees can carry over five days," the useful follow-up is not "Are you sure?" It is "Which document and paragraph did you use, when was it updated, and did you check exceptions?"</p>
+        <p>For a small business, this can be as simple as showing the filename, date, and quoted paragraph next to the answer. For a larger team, it may require document owners, version control, access permissions, and review logs. The technology is less important than whether people can trace the answer back to the right source.</p>`,
+      },
+      {
+        heading: "Common RAG failure patterns",
+        body: `<ul>
+          <li>The system retrieves the right document but the wrong paragraph.</li>
+          <li>The answer ignores an exception in a later section.</li>
+          <li>The source is old, duplicated, or no longer approved.</li>
+          <li>The model summarizes accurately but removes an important condition.</li>
+          <li>The user assumes citations prove correctness without opening them.</li>
+        </ul>`,
+      },
+    ],
+  },
+  "prompt-engineering-explained": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "Prompt clinic: from vague to reviewable",
+        body: `<p>Vague request: "Make this better." Reviewable request: "Rewrite this project update for a client who wants a clear status answer. Keep it under 140 words. Preserve the Friday delivery date. Do not mention internal staffing. End with one next step and flag any sentence that sounds like a guarantee."</p>
+        <p>The stronger prompt is not better because it is longer. It is better because the result can be checked. You can tell whether it kept the date, avoided private staffing context, stayed within length, and ended with a next step. A reviewable prompt produces a reviewable answer.</p>`,
+      },
+      {
+        heading: "Reusable prompt template",
+        body: `<div class="prompt-box">Task: [what the AI should produce]<br />Audience: [who will use or read it]<br />Source: [what material it may use]<br />Format: [bullets, table, email, checklist]<br />Boundaries: [what not to invent, reveal, or change]<br />Review: [facts, tone, privacy, missing details]</div>`,
+      },
+    ],
+  },
+  "how-to-use-ai-without-losing-your-judgment": {
+    read: "12 min read",
+    sections: [
+      {
+        heading: "A decision table for everyday use",
+        body: `<table class="decision-table">
+          <thead><tr><th>Task</th><th>AI role</th><th>Human review</th></tr></thead>
+          <tbody>
+            <tr><td>Rewrite a routine email</td><td>Draft wording options</td><td>Check tone, facts, and promises</td></tr>
+            <tr><td>Summarize meeting notes</td><td>Organize decisions and actions</td><td>Confirm owners, dates, and missing context</td></tr>
+            <tr><td>Interpret a contract clause</td><td>Explain plain-language possibilities</td><td>Use qualified legal review before relying on it</td></tr>
+            <tr><td>Analyze private customer data</td><td>Suggest a method or formula</td><td>Keep real data in approved systems</td></tr>
+          </tbody>
+        </table>`,
+      },
+      {
+        heading: "The one-question judgment test",
+        body: `<p>Before using an AI answer, ask: "Could I explain and defend this if someone challenged it?" If the answer is no, the work is not ready. You may need a source, a calculation, a policy check, a qualified reviewer, or a narrower prompt.</p>
+        <p>This test is simple, but it changes behavior. It prevents AI from becoming a shortcut around responsibility. It also helps you notice when the model has produced wording that sounds polished but leaves you unable to explain the underlying decision.</p>`,
+      },
+    ],
+  },
+  "check-ai-answers-before-you-trust-them": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "A five-minute verification workflow",
+        body: `<ol>
+          <li>Copy the answer into a note and mark every factual claim.</li>
+          <li>Separate stable claims from current claims, such as prices, laws, policies, features, and dates.</li>
+          <li>Open the source, not only the citation title.</li>
+          <li>Check numbers with a calculator or spreadsheet when they matter.</li>
+          <li>Rewrite the final answer in your own words so you know what you are accepting.</li>
+        </ol>`,
+      },
+      {
+        heading: "Red flags that need extra checking",
+        body: `<ul>
+          <li>The answer includes exact statistics without a clear source.</li>
+          <li>The source link exists but does not support the sentence beside it.</li>
+          <li>The model uses phrases such as "generally" or "typically" for a rule that may have exceptions.</li>
+          <li>The answer depends on a recent product, policy, law, or price.</li>
+          <li>The output sounds like professional advice in a high-stakes area.</li>
+        </ul>`,
+      },
+    ],
+  },
+  "ai-privacy-checklist-before-you-paste": {
+    read: "10 min read",
+    sections: [
+      {
+        heading: "Sanitizing example",
+        body: `<p>Original text: "Can you rewrite this complaint from Maria Chen at 41 Green Street about invoice INV-1042 and her diabetes supply delivery?" Safer version: "Rewrite a complaint from a customer about a delayed medical supply order. Do not include names, addresses, invoice numbers, or health details. Keep the tone calm and ask for a status update."</p>
+        <p>The safer version still gives the model the communication task. It removes identifiers, exact records, and health context that the model does not need to produce a useful draft.</p>`,
+      },
+      {
+        heading: "Data that deserves an automatic pause",
+        body: `<ul>
+          <li>Credentials, recovery codes, API keys, access tokens, or private links.</li>
+          <li>Customer, patient, student, employee, or applicant records.</li>
+          <li>Contracts, disputes, unreleased financials, pricing, strategy, or personnel issues.</li>
+          <li>Small combinations of details that identify a person even without a name.</li>
+        </ul>`,
+      },
+    ],
+  },
+  "ai-hallucinations-are-a-workflow-problem": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "Why the workflow matters more than the warning",
+        body: `<p>A warning that "AI can be wrong" is useful only if the work process changes. If a team still copies the answer into a report without opening sources, the warning has not reduced risk. A better workflow assigns the model a limited job, such as drafting a summary, and assigns a person the verification job.</p>
+        <p>For public articles, customer emails, school submissions, internal policies, and business decisions, the review step should be visible. That can be a note, checklist, source section, approval field, or second-person review. The goal is to make mistakes catchable before they leave the draft stage.</p>`,
+      },
+      {
+        heading: "A simple hallucination test",
+        body: `<p>Ask the model to rewrite its answer using only facts from a source you provide. Then compare the new answer with the first answer. Any fact that appears in the first answer but not in the source should be treated as unsupported until verified elsewhere.</p>`,
+      },
+    ],
+  },
+  "ai-for-excel-users": {
+    read: "11 min read",
+    sections: [
+      {
+        heading: "Formula review example",
+        body: `<p>If AI suggests a formula to count shipped orders in July, test it against a tiny table where you already know the answer. Include one shipped order in July, one pending order in July, one shipped order in June, one blank date, and one text date. This exposes date handling, status matching, and blank-cell assumptions.</p>
+        <p>That small test is faster than debugging a full workbook later. It also makes the AI useful without giving it private rows, customer names, payroll figures, or sales data.</p>`,
+      },
+      {
+        heading: "What to keep in the spreadsheet",
+        body: `<ul>
+          <li>Final calculations, totals, and reconciliations.</li>
+          <li>Raw private data and confidential rows.</li>
+          <li>Version history for important formulas.</li>
+          <li>Manual checks for unusual cases, blanks, duplicates, and regional settings.</li>
+        </ul>`,
+      },
+    ],
+  },
+};
+
+for (const article of articles) {
+  const enhancement = articleEnhancements[article.slug];
+  if (enhancement?.read) article.read = enhancement.read;
+  if (enhancement?.sections) article.sections.push(...enhancement.sections);
+  article.sources = [
+    ...(trustedSourcesByCategory[article.category] || trustedSourcesByCategory["AI Basics"]),
+    ...(enhancement?.sources || []),
+  ];
+}
+
 const toolPages = [
   {
     slug: "ai-privacy-risk-checker",
@@ -865,6 +1101,35 @@ const toolPages = [
       "A simple checklist tool that helps you decide whether text is safe to paste into an AI assistant.",
     intro:
       "Select the kinds of information you plan to include. The checker gives a practical risk level and safer next steps. It runs in your browser and does not send your selections anywhere.",
+    guidance: {
+      heading: "What the checker is designed to catch",
+      paragraphs: [
+        "The risk checker focuses on the details that people most often paste without noticing: identifiers, customer records, employee information, contracts, credentials, unreleased business plans, and financial context. A prompt can look harmless when read quickly, but one name, invoice number, private link, or exact figure may be enough to expose more than the task requires.",
+        "The result is intentionally conservative. A low-risk result does not mean every output is correct, and a high-risk result does not mean AI can never be used. It means the prompt should be rewritten, sanitized, or moved into an approved workplace tool before any real data is shared.",
+      ],
+      steps: [
+        "Start by selecting every type of information that appears in the text you plan to paste.",
+        "Read the risk reasons, then remove anything the AI does not need to complete the task.",
+        "Replace real names, account details, and exact numbers with roles, ranges, or fictional examples.",
+        "If regulated or confidential data remains, stop and use the policy-approved process for that material.",
+      ],
+      limits:
+        "This page is an educational checklist, not legal, privacy, security, medical, or compliance advice. It cannot know your contracts, local laws, account settings, or employer policy.",
+    },
+    faq: [
+      [
+        "Does this tool send my answers anywhere?",
+        "No. The checker runs in the browser using the choices on the page. It is designed as a local decision aid, not as a data collection form.",
+      ],
+      [
+        "What should I do with a high-risk result?",
+        "Rewrite the prompt with fictional examples, remove identifiers, or use an approved workplace tool with the right data protections. If regulated data remains, ask the responsible person before using AI.",
+      ],
+      [
+        "Why can public information still need checking?",
+        "Public information is usually lower privacy risk, but an AI answer can still be outdated, incomplete, or misread. Privacy risk and factual accuracy are separate checks.",
+      ],
+    ],
     markup: `<form class="tool-panel" data-tool="privacy-checker">
         <fieldset>
           <legend>What does your prompt include?</legend>
@@ -890,6 +1155,35 @@ const toolPages = [
       "Build a clear AI prompt for workplace email drafts without exposing more context than needed.",
     intro:
       "Choose the email purpose, audience, tone, and boundaries. The builder creates a prompt you can copy into your AI assistant, then edit with your real details.",
+    guidance: {
+      heading: "Why a prompt builder helps",
+      paragraphs: [
+        "Many workplace email prompts fail because they paste the whole situation into an AI tool and ask for a finished answer. That usually adds privacy risk and weakens the final message. A better prompt names the purpose, audience, tone, and boundaries first, then leaves private details as placeholders until you know what the draft actually needs.",
+        "This builder keeps the AI in a drafting role. It asks for a useful structure without allowing the model to invent dates, owners, prices, apologies, refunds, or promises. After the draft is created, the sender should add the real facts, check the tone, and remove anything that does not match the relationship.",
+      ],
+      steps: [
+        "Choose the closest purpose and audience before adding private context.",
+        "Keep the boundary specific, such as no invented dates or no refund promises.",
+        "Copy the generated prompt, then replace placeholders with only the facts needed for the email.",
+        "Before sending, check the recipient, commitment, deadline, and any sensitive detail.",
+      ],
+      limits:
+        "The builder cannot decide what your company, client, school, or regulator allows you to share. It also cannot verify whether the final email is accurate.",
+    },
+    faq: [
+      [
+        "Why not paste the full email thread first?",
+        "Long threads often include names, private details, old decisions, and irrelevant context. A narrow prompt lets you get a draft structure before deciding what facts the model actually needs.",
+      ],
+      [
+        "What should I edit after the draft is generated?",
+        "Check the recipient, relationship, deadline, promised action, tone, and any sentence that could create a commitment. Replace placeholders with verified facts only.",
+      ],
+      [
+        "Can I use this for customer or legal messages?",
+        "Use extra review. Customer, legal, financial, medical, employment, or compliance messages can create real obligations, so the final wording should be approved by the right person.",
+      ],
+    ],
     markup: `<form class="tool-panel" data-tool="email-builder">
         <label>Purpose
           <select name="purpose">
@@ -935,6 +1229,35 @@ const toolPages = [
       "A lightweight decision tool for choosing the right kind of AI assistant for writing, research, spreadsheets, coding, or study.",
     intro:
       "Answer a few practical questions. The tool recommends the type of AI assistant to start with and what to verify before using it.",
+    guidance: {
+      heading: "How the recommendation should be used",
+      paragraphs: [
+        "The best AI assistant is usually the one that fits a repeated task, not the one with the loudest product claim. Writing, research, spreadsheets, coding, and study all need different review habits. A tool that is helpful for public brainstorming may be the wrong place for customer records or confidential workbooks.",
+        "The picker turns the choice into three questions: what are you trying to do, how sensitive is the data, and do current sources matter? Those questions are simple, but they prevent a common mistake: using one general AI chat for every task without thinking about privacy, source quality, integrations, or how the result will be checked.",
+      ],
+      steps: [
+        "Choose the main task, then decide whether your data is public, internal, or sensitive.",
+        "Say whether current sources matter; this changes the kind of verification needed.",
+        "Use the recommendation as a starting point for a small test, not as final approval.",
+        "Keep a written note of what failed, what needed editing, and what policy checks were required.",
+      ],
+      limits:
+        "This picker does not approve vendors, replace procurement review, or evaluate security controls. Sensitive work still needs the right account, admin settings, and policy review.",
+    },
+    faq: [
+      [
+        "Why does sensitivity matter so much?",
+        "The same task can be low-risk with fictional information and high-risk with customer, employee, legal, financial, or confidential records. The data changes the approval path.",
+      ],
+      [
+        "What does current-source need mean?",
+        "Some tasks depend on fresh facts, such as pricing, laws, product features, policies, and dates. For those tasks, choose tools that can show sources and still verify the sources yourself.",
+      ],
+      [
+        "Should I use many AI assistants at once?",
+        "For sensitive or repeated work, a smaller approved toolset is easier to govern. Testing many tools can spread private context and make review harder.",
+      ],
+    ],
     markup: `<form class="tool-panel" data-tool="tool-picker">
         <label>Main task
           <select name="task">
@@ -1065,6 +1388,19 @@ function renderApplicationSections(article) {
         </section>`;
 }
 
+function renderSourceSection(article) {
+  if (!article.sources?.length) return "";
+  return `<section class="source-list">
+          <h2>Sources and further reading</h2>
+          <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
+          <ul>
+            ${article.sources
+              .map(([label, url]) => `<li><a href="${url}">${label}</a></li>`)
+              .join("\n            ")}
+          </ul>
+        </section>`;
+}
+
 function renderArticle(article) {
   const related = articles
     .filter((item) => item.slug !== article.slug && item.category === article.category)
@@ -1077,6 +1413,7 @@ function renderArticle(article) {
     relativePath: `articles/${article.slug}.html`,
     type: "article",
     article,
+    allowAds: true,
   })}
   <body>
     ${header("articles", "../")}
@@ -1105,6 +1442,11 @@ function renderArticle(article) {
           )
           .join("\n        ")}
         ${renderApplicationSections(article)}
+        <section class="content-section reviewer-note">
+          <h2>Editorial review note</h2>
+          <p>This guide was reviewed for plain-language clarity, privacy cautions, high-stakes limits, and whether the suggested workflow keeps a person responsible for final judgment. It is educational content, not legal, medical, financial, security, or professional compliance advice.</p>
+        </section>
+        ${renderSourceSection(article)}
         <section class="takeaway">
           <h2>Best takeaway</h2>
           <p>${article.takeaway}</p>
@@ -1118,6 +1460,37 @@ function renderArticle(article) {
     ${footer("../")}
   </body>
 </html>`;
+}
+
+function renderToolGuidance(tool) {
+  return `<section class="content-section">
+        <h2>${tool.guidance.heading}</h2>
+        ${tool.guidance.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("\n        ")}
+      </section>
+      <section class="content-section">
+        <h2>Use it as a review step</h2>
+        <ol>
+          ${tool.guidance.steps.map((step) => `<li>${step}</li>`).join("\n          ")}
+        </ol>
+        <p>${tool.guidance.limits}</p>
+      </section>
+      <section class="content-section faq-section">
+        <h2>Common questions</h2>
+        ${tool.faq
+          .map(
+            ([question, answer]) => `<h3>${question}</h3>
+        <p>${answer}</p>`
+          )
+          .join("\n        ")}
+      </section>
+      <section class="source-list">
+        <h2>Related guides</h2>
+        <ul>
+          <li><a href="../articles/ai-privacy-checklist-before-you-paste.html">A Privacy Checklist Before You Paste Text Into AI</a></li>
+          <li><a href="../articles/check-ai-answers-before-you-trust-them.html">How to Check an AI Answer Before You Trust It</a></li>
+          <li><a href="../articles/how-to-use-ai-without-losing-your-judgment.html">How to Use AI Without Losing Your Judgment</a></li>
+        </ul>
+      </section>`;
 }
 
 function renderTool(tool) {
@@ -1135,6 +1508,7 @@ function renderTool(tool) {
         <p>${tool.intro}</p>
       </section>
       ${tool.markup}
+      ${renderToolGuidance(tool)}
     </main>
     ${footer("../")}
   </body>
@@ -1149,6 +1523,7 @@ function renderHome() {
     description:
       "Plain-English AI guides, privacy checklists, prompt examples, and free tools for people who use AI at work, school, and daily life.",
     relativePath: "index.html",
+    allowAds: true,
   })}
   <body>
     ${header("home")}
@@ -1236,6 +1611,7 @@ function renderArticlesIndex() {
     description:
       "Browse beginner-friendly AI guides about AI basics, prompts, privacy, workplace use, hallucinations, tools, and responsible AI habits.",
     relativePath: "articles.html",
+    allowAds: true,
   })}
   <body>
     ${header("articles")}
@@ -1288,6 +1664,13 @@ function renderToolsIndex() {
       </section>
       <section class="section-block">
         <div class="info-panel">
+          <h2>How these tools are designed</h2>
+          <p>Each tool is intentionally narrow. It asks for a small set of choices, gives a plain-language result, and points readers back to a human review step. The tools are not meant to replace workplace policy, legal review, privacy review, or source checking.</p>
+          <p>The tools work best when readers use public, fictional, or sanitized examples first. If the task involves customer, employee, student, medical, legal, financial, security, or confidential business data, the safer choice is to use an approved tool and follow the relevant policy before sharing any real information.</p>
+        </div>
+      </section>
+      <section class="section-block">
+        <div class="info-panel">
           <h2>Privacy note</h2>
           <p>The tools on this site run in your browser. They do not require account sign-in and do not send your selections to The AI Explainer.</p>
         </div>
@@ -1327,10 +1710,17 @@ const simplePages = [
     h1: "The AI Explainer explains AI in plain English.",
     body: `<p>The AI Explainer is an independent AI literacy website for readers who want practical, easy-to-understand explanations of artificial intelligence, AI tools, privacy risks, and everyday work use cases.</p>
       <p>The main audience is non-technical readers: office workers, students, freelancers, small business owners, and curious people who want to use AI carefully without needing a computer science background.</p>
+      <p>The site is maintained as an editorial resource rather than a tool directory. Each guide is written to answer a specific reader question, explain the limits of AI assistance, and give a practical review step that can be used before someone trusts an output.</p>
+      <h2>Who is responsible for the content</h2>
+      <p>Articles are published under The AI Explainer Editorial Desk so the site can keep one consistent review standard. The site owner is responsible for final publication decisions, corrections, page updates, advertising boundaries, and reader contact through <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>
       <h2>Editorial focus</h2>
       <p>Articles focus on clear examples, responsible use, practical checklists, and source-aware explanations. The site avoids hype, copied summaries, fake certainty, and advice that should come from qualified legal, medical, financial, or security professionals.</p>
       <h2>How the site is maintained</h2>
-      <p>Guides are reviewed for clarity, usefulness, safety notes, and outdated references. Tool comparisons are written as decision frameworks because AI products change frequently.</p>`,
+      <p>Guides are reviewed for clarity, usefulness, safety notes, and outdated references. Tool comparisons are written as decision frameworks because AI products change frequently. When a topic depends on current pricing, product features, laws, policies, or medical and financial decisions, readers are told to verify details with primary sources or qualified professionals.</p>
+      <h2>What the site does not do</h2>
+      <p>The AI Explainer does not provide legal, medical, financial, security, immigration, tax, or professional compliance advice. It also does not claim that AI tools are safe for every workplace or every kind of data. The goal is to help readers ask better questions before they rely on a tool.</p>
+      <h2>Reader contact</h2>
+      <p>For corrections, privacy questions, permissions, or general feedback, email <a href="mailto:${contactEmail}">${contactEmail}</a>. Include the page URL and the specific sentence or issue that needs review.</p>`,
   },
   {
     relativePath: "contact.html",
@@ -1340,12 +1730,23 @@ const simplePages = [
       "Correction, privacy, copyright, and site notice information for The AI Explainer.",
     eyebrow: "Contact",
     h1: "Contact and corrections.",
-    body: `<p>No public email inbox is configured for this site yet. This page is kept for transparency and will be updated when an official contact channel is available.</p>
-      <p>For future correction, privacy, copyright, or site notice requests, prepare the page URL, the exact sentence or issue, and enough context to review the concern. Do not send passwords, account details, private legal documents, medical records, financial records, or other confidential personal information.</p>
+    body: `<p>Use this page for corrections, privacy questions, copyright questions, permissions, advertising notices, and general feedback about The AI Explainer.</p>
+      <p>Email: <a href="mailto:${contactEmail}">${contactEmail}</a>. Typical review time is 3 to 5 business days for ordinary site messages. Include the page URL, the exact sentence or issue, and enough context to review the concern.</p>
       <h2>Correction requests</h2>
-      <p>If an article may be unclear or outdated, include the article title, the relevant paragraph, and the source or reason for the correction. Corrections are reviewed for accuracy and usefulness.</p>
+      <p>If an article may be unclear or outdated, include the article title, the relevant paragraph, and the source or reason for the correction. Corrections are reviewed for accuracy and usefulness. If a change materially affects a reader's understanding, the page may be updated with a new review date.</p>
+      <h2>What to include</h2>
+      <ul>
+        <li>The page URL and article title.</li>
+        <li>The sentence, heading, tool result, or link that needs review.</li>
+        <li>A short explanation of the issue and any primary source that supports the correction.</li>
+        <li>Your preferred contact address for follow-up.</li>
+      </ul>
+      <h2>Privacy and sensitive information</h2>
+      <p>Do not send passwords, account details, private legal documents, medical records, financial records, customer files, confidential business documents, or urgent safety requests. The site publishes general educational information and cannot provide emergency, legal, medical, financial, or security assistance.</p>
       <h2>Advertising and sponsorship</h2>
-      <p>The site may display advertising. Sponsored placements, if accepted in the future, must be clearly labeled and may not override editorial judgment.</p>`,
+      <p>The site may display advertising. Sponsored placements, if accepted in the future, must be clearly labeled and may not override editorial judgment. Do not ask for ad clicks, paid link placement that changes article conclusions, or undisclosed sponsored recommendations.</p>
+      <h2>Response limits</h2>
+      <p>The contact inbox is for site-related messages. It cannot provide individual AI tool recommendations for private cases, review confidential documents, troubleshoot emergency problems, or give professional advice. For high-stakes matters, contact a qualified professional or the organization responsible for the data or decision.</p>`,
   },
   {
     relativePath: "editorial-policy.html",
@@ -1355,14 +1756,19 @@ const simplePages = [
       "The editorial policy for The AI Explainer, including content standards, updates, AI assistance, corrections, and advertising boundaries.",
     eyebrow: "Editorial policy",
     h1: "How The AI Explainer writes and reviews content.",
-    body: `<h2>Purpose</h2>
+    body: `<p><strong>Last reviewed:</strong> ${reviewed}</p>
+      <h2>Purpose</h2>
       <p>The AI Explainer publishes practical AI literacy content for everyday readers. The goal is to make AI concepts, tools, prompts, privacy risks, and workplace use easier to understand and easier to evaluate.</p>
       <h2>Content standards</h2>
       <p>Every article should answer a real reader question, define important terms, explain limits, and include practical checks. Articles should not rely on copied summaries, exaggerated claims, or generic advice that could apply to any topic.</p>
+      <h2>Who, how, and why</h2>
+      <p><strong>Who:</strong> pages are published by The AI Explainer Editorial Desk. <strong>How:</strong> articles may use AI for outlining or readability checks, but final wording, examples, warnings, and corrections are reviewed before publication. <strong>Why:</strong> the site exists to help ordinary readers use AI with better judgment, not to produce search-engine pages or tool hype.</p>
       <h2>Use of AI assistance</h2>
       <p>AI tools may be used for outlining, drafting, editing, or checking readability. Human review is required before publication. Final responsibility for wording, examples, safety notes, and updates belongs to the site owner or editorial reviewer.</p>
+      <h2>Sources and verification</h2>
+      <p>When a page discusses current products, policies, prices, legal requirements, medical topics, financial decisions, or other high-stakes matters, readers are told to verify details with primary sources or qualified professionals. Articles are written to support practical judgment, not replace it.</p>
       <h2>Corrections and updates</h2>
-      <p>AI products, search experiences, and privacy settings change. Pages may be updated when examples become outdated, explanations can be clearer, or a reader reports an issue. Material changes should keep the article useful rather than simply adding keywords.</p>
+      <p>AI products, search experiences, and privacy settings change. Pages may be updated when examples become outdated, explanations can be clearer, or a reader reports an issue. Material changes should keep the article useful rather than simply adding keywords. Correction requests can be sent to <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>
       <h2>Advertising boundary</h2>
       <p>Advertising may help support the site, but ads do not determine article conclusions. Any sponsored content or affiliate relationship should be disclosed clearly if introduced.</p>`,
   },
@@ -1374,19 +1780,24 @@ const simplePages = [
       "Privacy policy for The AI Explainer, including cookies, advertising, analytics, contact messages, and browser-based tools.",
     eyebrow: "Privacy policy",
     h1: "Privacy Policy.",
-    body: `<p>This Privacy Policy explains how The AI Explainer handles information related to this website. The site is an informational publication and does not require readers to create an account.</p>
+    body: `<p><strong>Last reviewed:</strong> ${reviewed}</p>
+      <p>This Privacy Policy explains how The AI Explainer handles information related to this website. The site is an informational publication and does not require readers to create an account.</p>
       <h2>Information you provide</h2>
-      <p>If a future official contact channel is added, messages may include the information you choose to provide. Do not send confidential personal information, passwords, account details, legal documents, medical records, or financial records.</p>
+      <p>If you email the site, messages may include your email address, name, page URL, correction request, permissions request, or any other information you choose to provide. Do not send confidential personal information, passwords, account details, legal documents, medical records, financial records, customer files, or other sensitive material.</p>
       <h2>Browser-based tools</h2>
       <p>The free tools on this site are designed to run in your browser. They do not require login and are not designed to transmit your selections to The AI Explainer.</p>
       <h2>Cookies and advertising</h2>
-      <p>The site may use third-party advertising services such as Google AdSense. These services may use cookies or similar technologies to serve and measure ads. Readers can manage ad personalization through their browser and Google account settings.</p>
+      <p>The site may use third-party advertising services such as Google AdSense. These services may use cookies or similar technologies to serve and measure ads. Google explains how it uses information from sites and apps that use its services at <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>. Readers can manage ad personalization through their browser and Google account settings.</p>
       <h2>Analytics and logs</h2>
       <p>Hosting providers and analytics tools may collect standard technical information such as pages visited, device type, browser type, referring pages, approximate location, and time of visit. This information is used to understand site performance and improve the reader experience.</p>
+      <h2>Email and retention</h2>
+      <p>Messages sent to the contact address may be retained long enough to review the request, respond, and keep a record of corrections or permissions decisions. Readers should avoid sending information they would not want stored in an ordinary email inbox.</p>
+      <h2>Your choices</h2>
+      <p>You can read the site without creating an account. You can disable or clear cookies in your browser settings, manage Google ad personalization through your Google account, and avoid sending personal information through email unless it is necessary for the request.</p>
       <h2>Children</h2>
       <p>This site is written for a general audience and is not directed to children under 13. Readers should follow school, parent, and local rules when using AI tools.</p>
       <h2>Contact</h2>
-      <p>The official contact channel has not been configured yet. This policy will be updated when one is available.</p>`,
+      <p>For privacy questions, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
   },
   {
     relativePath: "terms.html",
@@ -1396,7 +1807,8 @@ const simplePages = [
       "Terms of use and disclaimer for The AI Explainer, including educational use, no professional advice, advertising, and external links.",
     eyebrow: "Terms",
     h1: "Terms and disclaimer.",
-    body: `<h2>Educational content</h2>
+    body: `<p><strong>Last reviewed:</strong> ${reviewed}</p>
+      <h2>Educational content</h2>
       <p>The AI Explainer provides general educational information about artificial intelligence, AI tools, prompts, privacy habits, and everyday work use cases. The content is not professional legal, medical, financial, security, academic, or business advice.</p>
       <h2>No guarantee of accuracy</h2>
       <p>The site aims to publish clear and useful information, but AI products and policies change. Readers should verify important facts, product features, prices, rules, laws, and safety requirements with appropriate primary sources or qualified professionals.</p>
@@ -1404,8 +1816,14 @@ const simplePages = [
       <p>The site may link to external resources. External websites have their own policies, content, and availability. The AI Explainer is not responsible for third-party content or services.</p>
       <h2>Advertising</h2>
       <p>The site may show advertisements. Advertising does not create an endorsement unless clearly stated. Do not click ads in a way that is artificial, misleading, or intended to inflate revenue.</p>
+      <h2>No professional relationship</h2>
+      <p>Reading the site, using a browser-based tool, or emailing a correction request does not create a professional, advisory, attorney-client, medical, financial, security, employment, or consulting relationship. Readers remain responsible for checking facts and choosing the right professional review for high-stakes decisions.</p>
       <h2>Use of the site</h2>
-      <p>Readers may use the site for personal learning. Do not misuse the site, attempt to disrupt it, scrape it aggressively, or copy substantial portions for republication without permission.</p>`,
+      <p>Readers may use the site for personal learning. Do not misuse the site, attempt to disrupt it, scrape it aggressively, or copy substantial portions for republication without permission.</p>
+      <h2>Changes to pages</h2>
+      <p>Articles and tools may be updated as AI products, privacy practices, search experiences, and reader questions change. Updated pages should keep the original purpose clear and should not add keywords or claims that do not help readers.</p>
+      <h2>Contact</h2>
+      <p>For permissions, corrections, privacy questions, or content concerns, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
   },
   {
     relativePath: "copyright.html",
@@ -1415,11 +1833,16 @@ const simplePages = [
       "Copyright and content usage information for The AI Explainer.",
     eyebrow: "Copyright",
     h1: "Copyright and content use.",
-    body: `<p>Unless otherwise noted, original text, page structure, and site materials published on The AI Explainer are protected by copyright.</p>
+    body: `<p><strong>Last reviewed:</strong> ${reviewed}</p>
+      <p>Unless otherwise noted, original text, page structure, and site materials published on The AI Explainer are protected by copyright.</p>
       <h2>Allowed use</h2>
       <p>You may link to articles, quote short excerpts with attribution, and use the site for personal learning or internal reference. Do not republish full articles or large portions of the site without permission.</p>
+      <h2>Uses that need permission</h2>
+      <p>Ask before copying full articles, adapting multiple guides into another site, republishing tool text, translating substantial portions, selling printed versions, or using the site as source material for a competing content collection. Attribution does not replace permission when the copied portion is substantial.</p>
+      <h2>AI-assisted reuse</h2>
+      <p>Do not use automated tools to scrape, rewrite, or mass-republish the site in a way that substitutes for the original pages. Short quotations, links, and ordinary reader notes are welcome when they help people find the original article.</p>
       <h2>Copyright concerns</h2>
-      <p>If you believe content on this site should be reviewed for copyright reasons, prepare the page URL and details of the issue. This page will list the official review channel once it is configured.</p>`,
+      <p>If you believe content on this site should be reviewed for copyright reasons, email <a href="mailto:${contactEmail}">${contactEmail}</a> with the page URL, details of the issue, and your contact information.</p>`,
   },
 ];
 
@@ -1572,8 +1995,8 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(120, 169, 163, 0.38);
-  background: rgba(232, 247, 244, 0.86);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.72);
+  background: rgba(248, 250, 252, 0.86);
   backdrop-filter: blur(18px);
 }
 
@@ -1591,7 +2014,7 @@ textarea {
   gap: 11px;
   color: var(--ink);
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 850;
   letter-spacing: 0;
 }
 
@@ -1601,10 +2024,10 @@ textarea {
   width: 38px;
   height: 38px;
   border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--brand), var(--blue));
+  background: linear-gradient(135deg, #0f766e, #315fda);
   color: #fff;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
   box-shadow: var(--shadow-sm);
 }
 
@@ -1620,12 +2043,12 @@ textarea {
   border-radius: var(--radius);
   color: var(--ink-soft);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 760;
 }
 
 .site-nav a[aria-current="page"],
 .site-nav a:hover {
-  background: rgba(15, 118, 110, 0.11);
+  background: #e6f3f2;
   color: var(--brand-dark);
 }
 
@@ -1641,7 +2064,7 @@ textarea {
   margin-bottom: 12px;
   color: var(--brand-dark);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.14em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -1653,8 +2076,8 @@ h3 {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 850;
+  letter-spacing: -0.02em;
   line-height: 1.04;
 }
 
@@ -1693,7 +2116,7 @@ h1 {
   border-radius: var(--radius);
   background: var(--brand);
   color: #fff;
-  font-weight: 800;
+  font-weight: 850;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
 }
@@ -1705,12 +2128,12 @@ h1 {
 }
 
 .button.secondary {
-  background: rgba(255, 255, 255, 0.66);
+  background: #fff;
   color: var(--brand-dark);
 }
 
 .button.secondary:hover {
-  background: rgba(199, 242, 234, 0.74);
+  background: #e6f3f2;
   color: var(--brand-dark);
 }
 
@@ -1728,9 +2151,9 @@ h1 {
   border: 1px solid rgba(15, 118, 110, 0.24);
   border-radius: 28px;
   background:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.2), rgba(49, 95, 218, 0.14)),
-    repeating-linear-gradient(90deg, rgba(93, 140, 151, 0.38) 0 1px, transparent 1px 58px),
-    repeating-linear-gradient(180deg, rgba(93, 140, 151, 0.3) 0 1px, transparent 1px 58px);
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(37, 99, 235, 0.04)),
+    repeating-linear-gradient(90deg, rgba(203, 213, 225, 0.5) 0 1px, transparent 1px 58px),
+    repeating-linear-gradient(180deg, rgba(203, 213, 225, 0.38) 0 1px, transparent 1px 58px);
 }
 
 .visual-card {
@@ -1740,7 +2163,7 @@ h1 {
   padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: var(--shadow-md);
 }
 
@@ -1760,7 +2183,7 @@ h1 {
   display: block;
   color: var(--rose);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -1780,7 +2203,7 @@ h1 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.86);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1816,9 +2239,7 @@ h1 {
   width: 100%;
   max-width: none;
   padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2));
-  background:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(49, 95, 218, 0.1)),
-    linear-gradient(180deg, #dff4ef, #e8f2ff);
+  background: linear-gradient(180deg, #eef6f7, #f8fafc);
 }
 
 .section-heading {
@@ -1842,7 +2263,7 @@ h1 {
 .content-section a,
 .page-content a {
   color: var(--brand-dark);
-  font-weight: 800;
+  font-weight: 850;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
@@ -1867,7 +2288,7 @@ h1 {
 .related-guides {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.86);
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1905,7 +2326,7 @@ h1 {
 .tool-card span {
   color: var(--amber);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 850;
 }
 
 .page-hero {
@@ -1945,7 +2366,7 @@ h1 {
   display: inline-flex;
   margin-bottom: 30px;
   color: var(--brand-dark);
-  font-weight: 800;
+  font-weight: 850;
 }
 
 .article-header h1 {
@@ -1980,13 +2401,13 @@ h1 {
   gap: 0;
   margin: 28px 0 36px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(199, 242, 234, 0.52), rgba(220, 230, 255, 0.42));
+  background: #f8fcfb;
 }
 
 .key-points span {
   padding: 16px;
   color: var(--brand-dark);
-  font-weight: 800;
+  font-weight: 850;
 }
 
 .key-points span + span {
@@ -2023,16 +2444,83 @@ h1 {
   border: 1px solid rgba(37, 99, 235, 0.22);
   border-left: 4px solid var(--blue);
   border-radius: var(--radius);
-  background: #eef4ff;
+  background: #eff6ff;
   color: #1e3a8a;
-  font-weight: 700;
+  font-weight: 760;
+}
+
+.decision-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.decision-table th,
+.decision-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.decision-table th {
+  background: #eef6f7;
+  color: var(--brand-dark);
+  font-weight: 900;
+}
+
+.decision-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.source-list {
+  margin-top: 36px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+}
+
+.source-list h2,
+.faq-section h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.45rem, 1.2vw + 1.1rem, 2.1rem);
+}
+
+.source-list p {
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+.source-list a {
+  color: var(--brand-dark);
+  font-weight: 850;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.reviewer-note {
+  padding: 18px;
+  border-left: 4px solid var(--brand);
+  background: #f0fdfa;
+}
+
+.faq-section h3 {
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-size: 1.08rem;
+  line-height: 1.3;
 }
 
 .takeaway {
   margin-top: 40px;
   padding: 24px;
   border-color: rgba(217, 119, 6, 0.32);
-  background: #fff5df;
+  background: #fffbeb;
 }
 
 .takeaway p {
@@ -2068,20 +2556,20 @@ h1 {
 .tool-panel legend {
   margin-bottom: 8px;
   color: var(--ink);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .tool-panel label {
   display: grid;
   gap: 8px;
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 780;
 }
 
 .tool-panel label:has(input[type="checkbox"]) {
   grid-template-columns: auto 1fr;
   align-items: start;
-  font-weight: 600;
+  font-weight: 680;
 }
 
 input,
@@ -2126,7 +2614,7 @@ input[type="checkbox"] {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #f3faf9;
+  background: #f8fafc;
   color: var(--ink);
   white-space: pre-wrap;
 }
@@ -2203,12 +2691,8 @@ input[type="checkbox"] {
   }
 
   h1 {
-    max-width: 10ch;
-    font-size: clamp(2.25rem, 9vw, 2.85rem);
-  }
-
-  .hero h1 {
-    max-width: 9ch;
+    max-width: 11ch;
+    font-size: clamp(2.45rem, 11vw, 3.3rem);
   }
 
   .hero-copy > p:not(.eyebrow),

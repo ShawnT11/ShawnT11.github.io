@@ -17,10 +17,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20260722-4" />
+    <link rel="stylesheet" href="../styles.css?v=20260802-1" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
-    <script defer src="../script.js?v=20260722-4"></script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Large Language Models Explained in Plain English","description":"A simple explanation of large language models, tokens, training data, prompts, context windows, and why fluent answers can still be wrong.","dateModified":"2026-07-20","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/large-language-models-explained.html"}</script>
+    <script defer src="../script.js?v=20260802-1"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Large Language Models Explained in Plain English","description":"A simple explanation of large language models, tokens, training data, prompts, context windows, and why fluent answers can still be wrong.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/large-language-models-explained.html"}</script>
   </head>
   <body>
     <header class="site-header">
@@ -47,8 +47,8 @@
           <p class="article-dek">A large language model, or LLM, is an AI model trained to work with language. It predicts and generates text based on patterns it learned from large collections of writing and code.</p>
           <div class="article-meta">
             <span>The AI Explainer Editorial Desk</span>
-            <span>Reviewed July 20, 2026</span>
-            <span>9 min read</span>
+            <span>Reviewed August 2, 2026</span>
+            <span>12 min read</span>
           </div>
         </header>
         <aside class="key-points" aria-label="Key points">
@@ -86,6 +86,21 @@
         </ul>
         </section>
         <section class="content-section">
+          <h2>Why context can fail in ordinary work</h2>
+          <p>Suppose you paste a long policy document and ask for the vacation rule. The answer may be correct if the relevant paragraph is clear and nearby. It may be wrong if the document has exceptions, old sections, tables, or later updates that conflict with the first paragraph retrieved by the tool.</p>
+        <p>This is why long context is not the same as reliable context. A careful workflow asks the model to identify the exact source section it used, then a person checks whether another section changes the answer. For policies, contracts, school rules, and medical or financial material, source checking matters more than fluent wording.</p>
+        </section>
+        <section class="content-section">
+          <h2>A practical LLM checklist</h2>
+          <ul>
+          <li>Put the task first, before background material.</li>
+          <li>Tell the model what source text it may use.</li>
+          <li>Ask it to separate facts from assumptions.</li>
+          <li>Ask for "not stated" when the source does not contain an answer.</li>
+          <li>Verify important claims outside the model.</li>
+        </ul>
+        </section>
+        <section class="content-section">
           <h2>How to apply this guide</h2>
           <p>Use this concept when you are trying to understand what an AI tool can reasonably do before you rely on it. A basic definition is only useful when it helps you decide what to try, what to check, and what not to assume.</p>
           <ul>
@@ -100,6 +115,18 @@
           <h2>A safer prompt to try</h2>
           <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
           <div class="prompt-box">Explain this AI concept for a non-technical reader. Use one workplace example, one everyday example, and one warning about what people often misunderstand. End with three facts I should verify before relying on a tool that uses this concept.</div>
+        </section>
+        <section class="content-section reviewer-note">
+          <h2>Editorial review note</h2>
+          <p>This guide was reviewed for plain-language clarity, privacy cautions, high-stakes limits, and whether the suggested workflow keeps a person responsible for final judgment. It is educational content, not legal, medical, financial, security, or professional compliance advice.</p>
+        </section>
+        <section class="source-list">
+          <h2>Sources and further reading</h2>
+          <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
+          <ul>
+            <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li>
+            <li><a href="https://oecd.ai/en/ai-principles">OECD AI Principles</a></li>
+          </ul>
         </section>
         <section class="takeaway">
           <h2>Best takeaway</h2>

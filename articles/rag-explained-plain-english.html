@@ -17,10 +17,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20260722-4" />
+    <link rel="stylesheet" href="../styles.css?v=20260802-1" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
-    <script defer src="../script.js?v=20260722-4"></script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"RAG Explained in Plain English","description":"A beginner explanation of retrieval-augmented generation, why it helps AI answer with documents, and what can still go wrong.","dateModified":"2026-07-20","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/rag-explained-plain-english.html"}</script>
+    <script defer src="../script.js?v=20260802-1"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"RAG Explained in Plain English","description":"A beginner explanation of retrieval-augmented generation, why it helps AI answer with documents, and what can still go wrong.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/rag-explained-plain-english.html"}</script>
   </head>
   <body>
     <header class="site-header">
@@ -47,8 +47,8 @@
           <p class="article-dek">RAG stands for retrieval-augmented generation. It is a way to help an AI answer using external information, such as documents, help articles, policies, notes, or a database.</p>
           <div class="article-meta">
             <span>The AI Explainer Editorial Desk</span>
-            <span>Reviewed July 20, 2026</span>
-            <span>8 min read</span>
+            <span>Reviewed August 2, 2026</span>
+            <span>11 min read</span>
           </div>
         </header>
         <aside class="key-points" aria-label="Key points">
@@ -84,6 +84,21 @@
           <p>Ask what sources were searched, whether the answer cites exact passages, when those sources were updated, and whether the system ignored any documents. If the tool cannot show its sources, treat the answer as a helpful lead, not a final answer.</p>
         </section>
         <section class="content-section">
+          <h2>What to inspect in a RAG answer</h2>
+          <p>A good RAG answer should make the source visible. If a tool says "employees can carry over five days," the useful follow-up is not "Are you sure?" It is "Which document and paragraph did you use, when was it updated, and did you check exceptions?"</p>
+        <p>For a small business, this can be as simple as showing the filename, date, and quoted paragraph next to the answer. For a larger team, it may require document owners, version control, access permissions, and review logs. The technology is less important than whether people can trace the answer back to the right source.</p>
+        </section>
+        <section class="content-section">
+          <h2>Common RAG failure patterns</h2>
+          <ul>
+          <li>The system retrieves the right document but the wrong paragraph.</li>
+          <li>The answer ignores an exception in a later section.</li>
+          <li>The source is old, duplicated, or no longer approved.</li>
+          <li>The model summarizes accurately but removes an important condition.</li>
+          <li>The user assumes citations prove correctness without opening them.</li>
+        </ul>
+        </section>
+        <section class="content-section">
           <h2>How to apply this guide</h2>
           <p>Use this concept when you are trying to understand what an AI tool can reasonably do before you rely on it. A basic definition is only useful when it helps you decide what to try, what to check, and what not to assume.</p>
           <ul>
@@ -98,6 +113,18 @@
           <h2>A safer prompt to try</h2>
           <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
           <div class="prompt-box">Explain this AI concept for a non-technical reader. Use one workplace example, one everyday example, and one warning about what people often misunderstand. End with three facts I should verify before relying on a tool that uses this concept.</div>
+        </section>
+        <section class="content-section reviewer-note">
+          <h2>Editorial review note</h2>
+          <p>This guide was reviewed for plain-language clarity, privacy cautions, high-stakes limits, and whether the suggested workflow keeps a person responsible for final judgment. It is educational content, not legal, medical, financial, security, or professional compliance advice.</p>
+        </section>
+        <section class="source-list">
+          <h2>Sources and further reading</h2>
+          <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
+          <ul>
+            <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li>
+            <li><a href="https://oecd.ai/en/ai-principles">OECD AI Principles</a></li>
+          </ul>
         </section>
         <section class="takeaway">
           <h2>Best takeaway</h2>
