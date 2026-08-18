@@ -857,6 +857,111 @@ const articles = [
     takeaway:
       "The best AI assistant is the one that fits your repeated tasks, privacy constraints, integrations, and review habits.",
   },
+  {
+    slug: "small-team-ai-workflow-audit",
+    category: "AI at Work",
+    title: "A 20-Minute AI Workflow Audit for Small Teams",
+    description:
+      "A practical way for small teams to find AI use cases that save time without quietly adding privacy, accuracy, or approval risk.",
+    read: "12 min read",
+    intro:
+      "Useful AI adoption starts smaller than a software rollout. Find one repeated task, give AI a limited role, and make the human review step clear before the work reaches anyone else.",
+    points: ["Start with one repeated task", "Test with safe examples", "Measure review effort"],
+    sections: [
+      {
+        heading: "Start with work that repeats",
+        body: `<p>List the tasks your team repeats every week: turning meeting notes into actions, drafting routine emails, organizing research, preparing agendas, or translating rough notes into a first outline. Pick one task that is frequent, clearly owned, and annoying enough to improve. Ask how much time it takes now, what information it needs, and what goes wrong when it is rushed.</p>`,
+      },
+      {
+        heading: "Match the AI role to the cost of a mistake",
+        body: `<p>AI is safest when it supports a person instead of silently making a final decision. Use the risk of being wrong to decide how much review the task needs.</p><table><thead><tr><th>Task type</th><th>Useful AI role</th><th>Minimum review</th></tr></thead><tbody><tr><td>Routine writing</td><td>Draft wording</td><td>Check facts, promises, and voice</td></tr><tr><td>Meeting notes</td><td>Group decisions and questions</td><td>Confirm owners, dates, and context</td></tr><tr><td>Private records</td><td>Suggest a fictional workflow</td><td>Keep real data in approved systems</td></tr><tr><td>High-stakes work</td><td>List questions or explain public background</td><td>Accountable reviewer makes the decision</td></tr></tbody></table>`,
+      },
+      {
+        heading: "Run the smallest safe test",
+        body: `<p>Use sanitized examples first. Give two or three people the same task and compare the AI-assisted result with the usual process. Track not only whether the first draft arrives faster, but also whether reviewing and correcting it takes less time. A fast first draft that creates a slow approval process is not a real win.</p>`,
+      },
+      {
+        heading: "Keep one short evidence note",
+        body: `<p>After the test, write down the prompt pattern, what information must stay out of it, what a reviewer checks, and the result. A simple note such as “saves ten minutes per agenda; coordinator verifies dates and attendees” is more useful than a vague claim that AI helped. It lets the team repeat the good workflow and avoid rediscovering the same risks.</p>`,
+      },
+      {
+        heading: "Standardize only what proved useful",
+        body: `<p>Turn a successful test into a small template: the approved tool, an example prompt, the inputs allowed, the reviewer, and the point where the result can be shared. Keep the template short enough to use. If the task is still risky, unclear, or does not save meaningful time, leave it manual and try a different task instead.</p>`,
+      },
+    ],
+    takeaway:
+      "A good AI workflow is not the cleverest prompt. It is a repeated task with safe inputs, a visible reviewer, and evidence that the final work is actually better or faster.",
+  },
+  {
+    slug: "give-ai-feedback-that-improves-drafts",
+    category: "Prompts",
+    title: "How to Give AI Feedback That Improves the Next Draft",
+    description:
+      "A practical revision method for turning a weak AI draft into a useful second draft without starting the prompt from scratch.",
+    read: "10 min read",
+    intro:
+      "When an AI draft misses the mark, “make it better” rarely fixes the real problem. Treat feedback as you would feedback to a junior colleague: name what is wrong, protect what works, and set one clear target for the revision.",
+    points: ["Name the specific problem", "Protect what is correct", "Ask for one revision goal"],
+    sections: [
+      {
+        heading: "Why “make it better” is too vague",
+        body: `<p>An AI assistant cannot reliably infer whether “better” means shorter, friendlier, more accurate, less salesy, more specific, or suitable for a different reader. Vague feedback encourages it to guess. That can replace a good detail while leaving the important problem untouched.</p>`,
+      },
+      {
+        heading: "Use the four-part feedback stack",
+        body: `<p>Give the next draft four pieces of direction: <strong>keep</strong> what is already right, <strong>change</strong> the exact problem, <strong>limit</strong> anything that should not be added, and <strong>check</strong> the facts or constraints before returning the revision. This keeps the feedback practical and makes the change easy to inspect.</p><p>For example: “Keep the opening sentence and the deadline. Change the middle because it sounds too formal. Limit the message to 120 words. Check that it does not promise a feature we have not released.”</p>`,
+      },
+      {
+        heading: "Show the assistant the reason, not only the edit",
+        body: `<p>Instead of replacing a sentence silently, tell the assistant why it was changed. “This phrase sounds like marketing; write in a direct, helpful tone for existing customers” teaches a reusable preference. It also lets you judge whether the assistant understood the principle, rather than merely copying a line you supplied.</p>`,
+      },
+      {
+        heading: "Revise one dimension at a time",
+        body: `<p>Fix the structure first, then accuracy, then tone, then length. Asking for all of these at once makes it hard to see what improved and can create new errors. For a high-value draft, save each version or keep a short change log so you can compare the revision with the original.</p>`,
+      },
+      {
+        heading: "Know when prompting is no longer the answer",
+        body: `<p>If a draft lacks facts, source material, product knowledge, policy context, or a real point of view, more rewriting will not solve the problem. Pause, gather the missing material, and then provide it or ask the right person. AI can improve language, but it cannot supply trustworthy knowledge that was never in the task.</p>`,
+      },
+    ],
+    takeaway:
+      "The fastest route to a better AI draft is precise feedback: keep what works, name the problem, set a boundary, and verify the result against the real task.",
+  },
+  {
+    slug: "source-first-ai-research-workflow",
+    category: "Safety",
+    title: "A Source-First AI Research Workflow You Can Trust",
+    description:
+      "A practical research workflow that uses AI to organize questions and notes while keeping claims tied to the original sources.",
+    read: "13 min read",
+    intro:
+      "AI can help you frame questions, plan reading, and organize notes. It should not become the evidence. A source-first workflow keeps the original document, dataset, policy, or expert answer attached to every claim that matters.",
+    points: ["Start with a question", "Open the original source", "Separate evidence from wording"],
+    sections: [
+      {
+        heading: "Ask AI for questions before answers",
+        body: `<p>Begin with the decision you need to make and ask AI to generate a short research checklist. For example: What is officially available? Who is eligible? What are the exceptions? What date is this information current? Questions give you a map without asking the model to act as the authority.</p>`,
+      },
+      {
+        heading: "Build a three-column evidence note",
+        body: `<p>As you read, record the claim, the original source, and what still needs checking. This makes a polished summary easier to challenge before it becomes a decision.</p><table><thead><tr><th>Claim</th><th>Original source</th><th>What still needs checking</th></tr></thead><tbody><tr><td>A feature is available</td><td>Official documentation</td><td>Account type, region, and date</td></tr><tr><td>A policy applies</td><td>Policy owner or official page</td><td>Exceptions and approval path</td></tr><tr><td>A statistic supports a choice</td><td>Study or dataset</td><td>Method, sample, and limitations</td></tr></tbody></table>`,
+      },
+      {
+        heading: "Use AI after the evidence is visible",
+        body: `<p>Once you have notes, AI can group themes, draft a comparison table, identify unanswered questions, or turn your verified points into plain language. Tell it to label anything that is not established by the sources. If a statement has no supporting source, treat it as a lead to investigate, not a fact to repeat.</p>`,
+      },
+      {
+        heading: "Keep quotation context",
+        body: `<p>A sentence can sound decisive when it has been separated from its conditions. When using a quote or a precise claim, keep the surrounding paragraph, the publication date, and any definitions or exceptions. This is especially important for policies, research findings, and product documentation that changes over time.</p>`,
+      },
+      {
+        heading: "Do a final claim check",
+        body: `<p>Before sharing the work, read every important statement and ask: Can someone open the source and see this? Is it current? Did I turn a possibility into a promise? Did I confuse an AI summary with the original evidence? This final pass is where research becomes something people can trust.</p>`,
+      },
+    ],
+    takeaway:
+      "Use AI to make research easier to organize, not easier to believe. The original source supports the claim; the model helps you read, compare, and communicate it clearly.",
+  },
 ];
 
 const trustedSourcesByCategory = {
@@ -1516,7 +1621,9 @@ function renderTool(tool) {
 }
 
 function renderHome() {
-  const featured = articles.slice(0, 6).map((article) => articleCard(article)).join("\n          ");
+  const featured = [...articles.slice(-3), ...articles.slice(0, 3)]
+    .map((article) => articleCard(article))
+    .join("\n          ");
   const tools = toolPages.map((tool) => toolCard(tool)).join("\n          ");
   return `${head({
     title: "The AI Explainer | Clear AI Guides for Everyday Work",

@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Prompt Engineering Explained Without the Hype | The AI Explainer</title>
-    <meta name="description" content="A practical guide to writing prompts that give AI a clear task, enough context, and useful boundaries without making prompts unnecessarily long." />
+    <title>How to Give AI Feedback That Improves the Next Draft | The AI Explainer</title>
+    <meta name="description" content="A practical revision method for turning a weak AI draft into a useful second draft without starting the prompt from scratch." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="google-adsense-account" content="ca-pub-3430860743061587" />
     <meta name="theme-color" content="#0b0f37" />
-    <link rel="canonical" href="https://theaiexplainer.com/articles/prompt-engineering-explained.html" />
-    <meta property="og:title" content="Prompt Engineering Explained Without the Hype | The AI Explainer" />
-    <meta property="og:description" content="A practical guide to writing prompts that give AI a clear task, enough context, and useful boundaries without making prompts unnecessarily long." />
+    <link rel="canonical" href="https://theaiexplainer.com/articles/give-ai-feedback-that-improves-drafts.html" />
+    <meta property="og:title" content="How to Give AI Feedback That Improves the Next Draft | The AI Explainer" />
+    <meta property="og:description" content="A practical revision method for turning a weak AI draft into a useful second draft without starting the prompt from scratch." />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://theaiexplainer.com/articles/prompt-engineering-explained.html" />
+    <meta property="og:url" content="https://theaiexplainer.com/articles/give-ai-feedback-that-improves-drafts.html" />
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../styles.css?v=20260818-4" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
     <script defer src="../script.js?v=20260818-4"></script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Prompt Engineering Explained Without the Hype","description":"A practical guide to writing prompts that give AI a clear task, enough context, and useful boundaries without making prompts unnecessarily long.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/prompt-engineering-explained.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Give AI Feedback That Improves the Next Draft","description":"A practical revision method for turning a weak AI draft into a useful second draft without starting the prompt from scratch.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer Editorial Desk"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/give-ai-feedback-that-improves-drafts.html"}</script>
   </head>
   <body>
     <header class="site-header">
@@ -43,62 +43,45 @@
         <a class="back-link" href="../articles.html">Back to all guides</a>
         <header class="article-header">
           <p class="eyebrow">Prompts</p>
-          <h1>Prompt Engineering Explained Without the Hype</h1>
-          <p class="article-dek">Prompt engineering is the practice of giving AI clear instructions, context, examples, and boundaries so the output is easier to use and easier to check.</p>
+          <h1>How to Give AI Feedback That Improves the Next Draft</h1>
+          <p class="article-dek">When an AI draft misses the mark, “make it better” rarely fixes the real problem. Treat feedback as you would feedback to a junior colleague: name what is wrong, protect what works, and set one clear target for the revision.</p>
           <div class="article-meta">
             <span>The AI Explainer Editorial Desk</span>
             <span>Reviewed August 2, 2026</span>
-            <span>11 min read</span>
+            <span>10 min read</span>
           </div>
         </header>
         <aside class="key-points" aria-label="Key points">
-          <span>Define the job</span>
-          <span>Give useful context</span>
-          <span>Set review boundaries</span>
+          <span>Name the specific problem</span>
+          <span>Protect what is correct</span>
+          <span>Ask for one revision goal</span>
         </aside>
         <section class="content-section">
-          <h2>The short answer</h2>
-          <p>A prompt is not a magic phrase. It is a work request. Better prompts tell the AI what role to play, what output to produce, who the audience is, what information to use, what to avoid, and how the result will be judged.</p>
-        <p>Longer prompts are not automatically better. A clear short prompt beats a long prompt filled with conflicting instructions.</p>
+          <h2>Why “make it better” is too vague</h2>
+          <p>An AI assistant cannot reliably infer whether “better” means shorter, friendlier, more accurate, less salesy, more specific, or suitable for a different reader. Vague feedback encourages it to guess. That can replace a good detail while leaving the important problem untouched.</p>
         </section>
         <section class="content-section">
-          <h2>A simple prompt structure</h2>
-          <ol>
-          <li><strong>Task:</strong> What should the AI do?</li>
-          <li><strong>Context:</strong> What does it need to know?</li>
-          <li><strong>Audience:</strong> Who will read or use the output?</li>
-          <li><strong>Format:</strong> Should it produce bullets, a table, an email, or a checklist?</li>
-          <li><strong>Boundaries:</strong> What should it avoid or flag?</li>
-        </ol>
+          <h2>Use the four-part feedback stack</h2>
+          <p>Give the next draft four pieces of direction: <strong>keep</strong> what is already right, <strong>change</strong> the exact problem, <strong>limit</strong> anything that should not be added, and <strong>check</strong> the facts or constraints before returning the revision. This keeps the feedback practical and makes the change easy to inspect.</p><p>For example: “Keep the opening sentence and the deadline. Change the middle because it sounds too formal. Limit the message to 120 words. Check that it does not promise a feature we have not released.”</p>
         </section>
         <section class="content-section">
-          <h2>Example</h2>
-          <p>Weak prompt: "Write this better."</p>
-        <p>Stronger prompt: "Rewrite this update for a busy project manager. Keep it under 120 words, use a calm professional tone, keep the delivery date unchanged, and flag any sentence that sounds like a promise we cannot guarantee."</p>
+          <h2>Show the assistant the reason, not only the edit</h2>
+          <p>Instead of replacing a sentence silently, tell the assistant why it was changed. “This phrase sounds like marketing; write in a direct, helpful tone for existing customers” teaches a reusable preference. It also lets you judge whether the assistant understood the principle, rather than merely copying a line you supplied.</p>
         </section>
         <section class="content-section">
-          <h2>Ask for uncertainty</h2>
-          <p>For research or decisions, ask the model to separate what it knows from what it is assuming. You can say: "List assumptions before the answer," or "If a fact depends on current policy or pricing, tell me to verify it." This reduces the chance that a polished answer hides weak ground.</p>
+          <h2>Revise one dimension at a time</h2>
+          <p>Fix the structure first, then accuracy, then tone, then length. Asking for all of these at once makes it hard to see what improved and can create new errors. For a high-value draft, save each version or keep a short change log so you can compare the revision with the original.</p>
         </section>
         <section class="content-section">
-          <h2>Keep control</h2>
-          <p>The best prompts do not make the model responsible for your judgment. They make the model easier to supervise. Ask for drafts, options, critiques, checklists, and questions. Then decide what belongs in the final work.</p>
-        </section>
-        <section class="content-section">
-          <h2>Prompt clinic: from vague to reviewable</h2>
-          <p>Vague request: "Make this better." Reviewable request: "Rewrite this project update for a client who wants a clear status answer. Keep it under 140 words. Preserve the Friday delivery date. Do not mention internal staffing. End with one next step and flag any sentence that sounds like a guarantee."</p>
-        <p>The stronger prompt is not better because it is longer. It is better because the result can be checked. You can tell whether it kept the date, avoided private staffing context, stayed within length, and ended with a next step. A reviewable prompt produces a reviewable answer.</p>
-        </section>
-        <section class="content-section">
-          <h2>Reusable prompt template</h2>
-          <div class="prompt-box">Task: [what the AI should produce]<br />Audience: [who will use or read it]<br />Source: [what material it may use]<br />Format: [bullets, table, email, checklist]<br />Boundaries: [what not to invent, reveal, or change]<br />Review: [facts, tone, privacy, missing details]</div>
+          <h2>Know when prompting is no longer the answer</h2>
+          <p>If a draft lacks facts, source material, product knowledge, policy context, or a real point of view, more rewriting will not solve the problem. Pause, gather the missing material, and then provide it or ask the right person. AI can improve language, but it cannot supply trustworthy knowledge that was never in the task.</p>
         </section>
         <section class="content-section">
           <h2>How to apply this guide</h2>
           <p>Use this guide when your AI results feel vague, generic, too long, or hard to review. Better prompting is not about secret phrases. It is about designing a clearer task with boundaries and a review path.</p>
           <ul>
             <li>Write the task in one sentence before opening an AI tool.</li>
-            <li>Decide which parts need human review: define the job, give useful context, set review boundaries.</li>
+            <li>Decide which parts need human review: name the specific problem, protect what is correct, ask for one revision goal.</li>
             <li>Remove private or unnecessary context before prompting.</li>
             <li>Check whether the final output changes a fact, promise, number, date, or decision.</li>
           </ul>
@@ -123,12 +106,12 @@
         </section>
         <section class="takeaway">
           <h2>Best takeaway</h2>
-          <p>Prompt engineering is less about secret wording and more about clear work design: job, context, format, limits, and review.</p>
+          <p>The fastest route to a better AI draft is precise feedback: keep what works, name the problem, set a boundary, and verify the result against the real task.</p>
         </section>
         <nav class="related-guides" aria-label="Related guides">
           <h2>Read next</h2>
+          <a href="prompt-engineering-explained.html">Prompt Engineering Explained Without the Hype</a>
           <a href="write-ai-prompts-that-keep-you-in-control.html">Write AI Prompts That Keep You in Control</a>
-          <a href="give-ai-feedback-that-improves-drafts.html">How to Give AI Feedback That Improves the Next Draft</a>
         </nav>
       </article>
     </main>
