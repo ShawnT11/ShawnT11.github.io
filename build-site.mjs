@@ -7,7 +7,7 @@ const lastmod = "2026-08-02";
 const reviewed = "August 2, 2026";
 const adClient = "ca-pub-3430860743061587";
 const contactEmail = "hello@theaiexplainer.com";
-const assetVersion = "20260818-1";
+const assetVersion = "20260818-2";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
