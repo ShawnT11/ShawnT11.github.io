@@ -7,7 +7,7 @@ const lastmod = "2026-08-02";
 const reviewed = "August 2, 2026";
 const adClient = "ca-pub-3430860743061587";
 const contactEmail = "hello@theaiexplainer.com";
-const assetVersion = "20260818-2";
+const assetVersion = "20260818-3";
 
 function writeFile(relativePath, content) {
   const absolutePath = path.join(root, relativePath);
@@ -2818,6 +2818,9 @@ h1 .highlight { padding: 0 0.08em 0.04em; background: var(--amber); box-decorati
 .takeaway { padding: 27px; background: var(--brand); box-shadow: 6px 7px 0 #a9364b; }
 .takeaway h2, .takeaway p { color: #0b103c; }
 .related-guides { padding: 25px; }
+.related-guides h2 { color: #0b103c; }
+.related-guides a { color: #b83c54; }
+.related-guides a:hover { color: #0b103c; }
 
 .tool-panel { padding: 27px; background: var(--surface); }
 .tool-panel legend, .tool-panel label { color: #0b103c; }
