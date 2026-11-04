@@ -1,0 +1,11 @@
+"order_id","line_id","order_date","customer_code","phone","sku","quantity","unit_price_rm","discount_rm","status","note"
+"000101","1","2026-10-26","C001","0123456789","NOTE-A5","2","12.5","0","Shipped","Front desk"
+"000101","2","2026-10-26","C001","0123456789","PEN-BLK","3","3.2","0","Shipped","Same order, different line"
+"000102","1","2026-10-27","C002","01123456789","MUG-WHT","1","25","5","Shipped","Gift, no price tag"
+"000103","1","2026-10-28","C003","0134567890","NOTE-A5","4","12.5","2","Shipped","Leave with reception"
+"000105","1","2026-10-30","C005","0156789012","MUG-WHT","2","25","0","Shipped","Line one
+Line two"
+"000106","1","2026-10-31","C006","0167890123","BAG-CNV","1","35","5","Shipped","Call before delivery"
+"000107","1","2026-11-01","C007","0178901234","PEN-BLK","10","3.2","2","Shipped","Public sample only"
+"000111","1","2026-10-28","C011","0122222222","NOTE-A5","2","12.5","5","Shipped","Fictional record"
+"000112","1","2026-10-30","C012","0133333333","BAG-CNV","1","35","0","Shipped","Fictional record"

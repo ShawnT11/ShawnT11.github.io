@@ -1,0 +1,5 @@
+"raw_key","clean_key","reason"
+"PEN-BLK","PEN-BLK","Exact match"
+"PEN-BLK ","PEN-BLK","Trailing ASCII space"
+"PEN-BLK ","PEN-BLK","Trailing nonbreaking space"
+"00123","00123","Keep identifier text; do not convert to 123"

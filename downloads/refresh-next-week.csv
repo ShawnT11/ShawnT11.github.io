@@ -1,0 +1,3 @@
+"order_id","line_id","order_date","customer_code","phone","sku","quantity","unit_price_rm","discount_rm","status","note"
+"000201","1","02/11/2026","C020","0120000001","NOTE-A5","3","RM12.50","RM2.50","Shipped","Next-week refresh sample"
+"000202","1","03/11/2026","C021","0120000002","MUG-WHT","2","RM25.00","RM0.00","Shipped","Next-week refresh sample"

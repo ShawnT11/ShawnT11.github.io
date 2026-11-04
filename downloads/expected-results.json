@@ -1,0 +1,17 @@
+{
+  "dataset": "Original fictional order export",
+  "reportWindow": {
+    "startInclusive": "2026-10-26",
+    "endExclusive": "2026-11-02"
+  },
+  "includedStatus": "Shipped",
+  "sourceRecords": 14,
+  "uniqueRecords": 13,
+  "exactDuplicates": 1,
+  "includedLines": 9,
+  "orders": 8,
+  "units": 26,
+  "gross": 286.6,
+  "discount": 19,
+  "net": 267.6
+}

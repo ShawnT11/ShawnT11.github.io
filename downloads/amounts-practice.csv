@@ -1,0 +1,6 @@
+"raw_amount","expected_rm","rule"
+"RM 1,234.50","1234.50","Remove RM, comma, and spaces"
+"(RM25.00)","-25.00","Parentheses mean negative in this sample"
+"0.00","0","A valid zero"
+"","","Missing stays missing"
+"12,50","","Unresolved decimal convention"

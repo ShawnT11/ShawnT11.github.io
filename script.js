@@ -20,10 +20,10 @@ document.addEventListener("click", (event) => {
     const reasons = checked.map((item) => item.dataset.reason).filter(Boolean);
     let level = "Low risk";
     let advice = "Use a short prompt, avoid unnecessary details, and verify the output.";
-    if (score >= 8) {
+    if (checked.some((item) => Number(item.value) >= 3)) {
       level = "High risk";
       advice = "Do not paste this into a general AI tool. Remove sensitive data, use an approved tool, or ask for policy guidance.";
-    } else if (score >= 4) {
+    } else if (score >= 2) {
       level = "Medium risk";
       advice = "Sanitize the prompt first. Replace identifiers, remove private details, and share only what the task requires.";
     }
@@ -64,4 +64,3 @@ document.addEventListener("click", (event) => {
     text("[data-output='tool-picker-result']", map[task] + "\n\n" + warning + "\n\n" + sourceNote);
   }
 });
-

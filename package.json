@@ -1,0 +1,1 @@
+{"name":"theaiexplainer-workflow-lab","private":true,"type":"module","scripts":{"build":"node build-site.mjs","test":"node --test tests/*.test.mjs","preview":"node preview-server.mjs"}}
