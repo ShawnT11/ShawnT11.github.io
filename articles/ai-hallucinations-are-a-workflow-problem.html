@@ -21,7 +21,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
     <script defer src="../script.js?v=20260818-4"></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Hallucinations Are a Workflow Problem","description":"Why AI tools sometimes produce invented answers, why the mistakes are hard to spot, and how better workflows reduce the damage.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/ai-hallucinations-are-a-workflow-problem.html"}</script>
-  <link rel="stylesheet" href="../lab.css?v=20261104"></head>
+  <link rel="stylesheet" href="../lab.css?v=20261104-2"></head>
   <body class="legacy">
     <header class="lab-header"><a class="lab-skip" href="#main">Skip to content</a><div class="lab-nav"><a class="lab-logo" href="../index.html"><span class="lab-monogram" aria-hidden="true">ai</span>The AI Explainer</a><nav class="lab-links" aria-label="Main navigation"><a href="../articles.html">Workflows</a><a href="../tools.html">Tools</a><a href="../downloads.html">Downloads</a><a href="../about.html">About</a></nav></div></header>
     <main id="main" class="article-layout">
@@ -78,26 +78,7 @@
           <p>Ask the model to rewrite its answer using only facts from a source you provide. Then compare the new answer with the first answer. Any fact that appears in the first answer but not in the source should be treated as unsupported until verified elsewhere.</p>
         </section>
         <section class="content-section">
-          <h2>How to apply this guide</h2>
-          <p>Use this guide whenever an AI answer may influence a decision, publication, customer message, school submission, or business action. The more visible or costly the output is, the more explicit the checking process should be.</p>
-          <ul>
-            <li>Write the task in one sentence before opening an AI tool.</li>
-            <li>Decide which parts need human review: plausible can be false, sources matter, workflow reduces harm.</li>
-            <li>Remove private or unnecessary context before prompting.</li>
-            <li>Check whether the final output changes a fact, promise, number, date, or decision.</li>
-          </ul>
-          <p>Do not let a confident tone replace evidence. Separate useful wording from factual claims, then verify the claims through reliable sources or qualified review.</p>
-        </section>
-        <section class="content-section">
-          <h2>A safer prompt to try</h2>
-          <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
-          <div class="prompt-box">Act as a critical reviewer. Identify every factual claim, assumption, missing source, number, date, and possible overstatement in this AI-generated answer. Do not fix the answer until you list what needs verification.</div>
-        </section>
-        <section class="content-section reviewer-note">
-          <h2>About this background guide</h2><p>This is a general AI literacy guide. For original sample data, worked calculations, and browser tools, visit the <a href="../articles.html">spreadsheet workflow collection</a>.</p>
-        </section>
-        <section class="source-list">
-          <h2>Sources and further reading</h2>
+          <h2>Use a counterexample with a known numerical effect</h2><p>A formula can be syntactically valid and still implement the wrong question. In the prepared sales sample, summing every Shipped record gives RM327.60. Applying the reporting week correctly gives RM267.60. The difference is RM60.00 from records outside the date window.</p><p>This deliberately incomplete calculation is an authored counterexample, not evidence that a particular model produced it. It shows what a workflow check should catch: a missing condition that changes the result while leaving the answer plausible.</p><p>Use cases at the inclusive start, exclusive end, an ineligible status, and a legitimate zero. Compare the answer with an independently prepared result. A fluent explanation of the formula is helpful only after its logic matches the question.</p><p><a href="../guides/verify-ai-generated-spreadsheet-formulas.html">Follow the formula verification case</a>.</p><h2>Sources and further reading</h2>
           <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
           <ul>
             <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li>

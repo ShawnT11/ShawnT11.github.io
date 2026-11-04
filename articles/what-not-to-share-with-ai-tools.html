@@ -21,7 +21,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
     <script defer src="../script.js?v=20260818-4"></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Not to Share With AI Tools","description":"A practical list of information you should avoid entering into AI tools unless your tool, policy, and legal obligations allow it.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/what-not-to-share-with-ai-tools.html"}</script>
-  <link rel="stylesheet" href="../lab.css?v=20261104"></head>
+  <link rel="stylesheet" href="../lab.css?v=20261104-2"></head>
   <body class="legacy">
     <header class="lab-header"><a class="lab-skip" href="#main">Skip to content</a><div class="lab-nav"><a class="lab-logo" href="../index.html"><span class="lab-monogram" aria-hidden="true">ai</span>The AI Explainer</a><nav class="lab-links" aria-label="Main navigation"><a href="../articles.html">Workflows</a><a href="../tools.html">Tools</a><a href="../downloads.html">Downloads</a><a href="../about.html">About</a></nav></div></header>
     <main id="main" class="article-layout">
@@ -63,26 +63,7 @@
           <p>Use fictional examples, anonymized summaries, small excerpts, approved enterprise tools, or manual review. If you cannot complete the task without sensitive data, ask for permission before proceeding.</p>
         </section>
         <section class="content-section">
-          <h2>How to apply this guide</h2>
-          <p>Use this guide before you paste text, upload a file, or connect a tool that can read private context. Privacy decisions are easiest before the data enters the prompt. After that, you may not be able to undo the disclosure.</p>
-          <ul>
-            <li>Write the task in one sentence before opening an AI tool.</li>
-            <li>Decide which parts need human review: no secrets, no unnecessary personal data, use approved tools.</li>
-            <li>Remove private or unnecessary context before prompting.</li>
-            <li>Check whether the final output changes a fact, promise, number, date, or decision.</li>
-          </ul>
-          <p>If the material includes real people, customers, employees, contracts, credentials, financial records, or unique business details, pause and use a safer version of the task.</p>
-        </section>
-        <section class="content-section">
-          <h2>A safer prompt to try</h2>
-          <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
-          <div class="prompt-box">Review this planned AI prompt for privacy risk. Do not rewrite it yet. List the sensitive details, suggest replacements or removals, and tell me whether a generic version would be enough for the task.</div>
-        </section>
-        <section class="content-section reviewer-note">
-          <h2>About this background guide</h2><p>This is a general AI literacy guide. For original sample data, worked calculations, and browser tools, visit the <a href="../articles.html">spreadsheet workflow collection</a>.</p>
-        </section>
-        <section class="source-list">
-          <h2>Sources and further reading</h2>
+          <h2>A smaller spreadsheet question needs fewer columns</h2><p>Consider the fictional order export in the workflow collection. It contains order IDs, customer codes, phone numbers, products, quantities, prices, discounts, statuses, and notes. To ask how a line-value formula works, an assistant needs the meaning of quantity, unit price, and discount. It does not need a customer's phone number or the original delivery note.</p><p>A reduced example is: “Quantity is 2, unit price is 12.50, and the discount is 0.00 per line. Show the gross and net formulas and explain the difference between a line discount and a per-item discount.” All three amounts can be fictional. Keep the original file in the system approved for that data.</p><p>Replacing a name with Customer A does not necessarily remove the sensitivity of an unusual transaction or a detailed note. Review what remains after removing direct identifiers. If the task can be answered using column definitions and invented values, start there.</p><p><a href="../guides/import-order-csv-without-damaging-data.html">Inspect the fictional source columns</a> and <a href="../downloads.html">download the practice data</a>.</p><h2>Sources and further reading</h2>
           <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
           <ul>
             <li><a href="https://www.ftc.gov/industry/technology/artificial-intelligence">FTC artificial intelligence topic page</a></li>

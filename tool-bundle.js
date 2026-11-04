@@ -8,7 +8,7 @@ function detectDelimiter(text) {
 }
 function parseCSV(text, delimiter="auto") {
   if(typeof text!=="string" || !text.trim())throw new Error("Paste CSV text or choose a file first.");
-  if(text.length>LIMIT)throw new Error("This tool accepts up to 5 MB of text.");
+  if(new TextEncoder().encode(text).byteLength>LIMIT)throw new Error("This tool accepts up to 5 MB of text.");
   text=text.replace(/^\uFEFF/,""); delimiter=delimiter==="auto"?detectDelimiter(text):delimiter;
   if(![",",";","\t"].includes(delimiter))throw new Error("Choose comma, semicolon, or tab.");
   let rows=[],row=[],field="",quoted=false,closed=false;
@@ -64,7 +64,8 @@ function compareTables(left,right,key) {
     if(aa.length>1||bb.length>1)status="Repeated key — review";
     else if(!aa.length)status="Only in B";else if(!bb.length)status="Only in A";
     else status=left.headers.every((h,i)=>aa[0][i]===bb[0][right.headers.indexOf(h)])?"Unchanged":"Changed";
-    results.push({key:id,status,countA:aa.length,countB:bb.length,rowA:aa[0]||[],rowB:bb[0]||[]});
+    const differences=aa.length===1&&bb.length===1?left.headers.flatMap((column,index)=>aa[0][index]===bb[0][right.headers.indexOf(column)]?[]:[{column,before:aa[0][index],after:bb[0][right.headers.indexOf(column)]}]):[];
+    results.push({key:id,status,countA:aa.length,countB:bb.length,rowA:aa[0]||[],rowB:bb[0]||[],rowsA:aa,rowsB:bb,differences});
   }
   return {results,counts:Object.fromEntries(["Unchanged","Changed","Only in A","Only in B","Repeated key — review"].map(status=>[status,results.filter(r=>r.status===status).length]))};
 }
@@ -84,6 +85,66 @@ function reviewDate(value,convention="review") {
 }
 function csvText(rows,{spreadsheetSafe=false}={}) {
   return rows.map(row=>row.map(value=>{let s=String(value??"");if(spreadsheetSafe&&/^[\s]*[=+@\-\t\r]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';}).join(",")).join("\r\n")+"\r\n";
+}
+
+function parseRMCents(value) {
+  let text=String(value).trim();let negative=false;
+  if(text.startsWith('(')&&text.endsWith(')')){negative=true;text=text.slice(1,-1).trim();}
+  text=text.replace(/^RM\s*/i,'');
+  if(text.startsWith('-')){if(negative)throw new Error('Use either parentheses or a minus sign, not both.');negative=true;text=text.slice(1);}
+  if(!/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d{1,2})?$/.test(text))throw new Error('Use an amount such as RM12.50 or 1,234.50; blank and other decimal conventions need review.');
+  const [whole,fraction='']=text.replaceAll(',','').split('.');const cents=Number(whole)*100+Number(fraction.padEnd(2,'0'));
+  if(!Number.isSafeInteger(cents))throw new Error('Amount exceeds the supported exact cent range.');
+  return negative?-cents:cents;
+}
+
+function formatCents(cents,{grouping=false}={}) {
+  if(cents===null)return '';
+  if(!Number.isSafeInteger(cents))throw new Error('Amount exceeds the supported exact cent range.');
+  const digits=String(Math.abs(cents)).padStart(3,'0'),fraction=digits.slice(-2);
+  const whole=grouping?digits.slice(0,-2).replace(/\B(?=(\d{3})+(?!\d))/g,','):digits.slice(0,-2);
+  return (cents<0?'-':'')+whole+'.'+fraction;
+}
+
+function reconcileSales(table,{start,end,convention='review',removeExactDuplicates=false,status='Shipped'}={}) {
+  validateTable(table);
+  const startCheck=reviewDate(start||''),endCheck=reviewDate(end||'');
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(start||'')||!/^\d{4}-\d{2}-\d{2}$/.test(end||'')||!startCheck.iso||!endCheck.iso||start>=end)throw new Error('Choose valid ISO start and exclusive end dates, with the end after the start.');
+  if(!['review','dmy','mdy'].includes(convention))throw new Error('Choose a supported source date convention.');
+  const columns=['order_id','line_id','order_date','sku','quantity','unit_price_rm','discount_rm','status'];
+  const missing=columns.filter(name=>!table.headers.includes(name));if(missing.length)throw new Error('Missing required columns: '+missing.join(', '));
+  const pos=Object.fromEntries(columns.map(name=>[name,table.headers.indexOf(name)]));
+  const fingerprints=new Map(),lineVersions=new Map();
+  table.rows.forEach(row=>{const key=JSON.stringify([row[pos.order_id],row[pos.line_id]]);if(!lineVersions.has(key))lineVersions.set(key,new Set());lineVersions.get(key).add(JSON.stringify(row));});
+  const audit=[];let removed=0,repeated=0;
+  table.rows.forEach((row,index)=>{
+    const item={record:index+1,original:row,order:row[pos.order_id],line:row[pos.line_id],sku:row[pos.sku],sourceDate:row[pos.order_date],sourceStatus:row[pos.status],decision:'',reason:'',date:'',quantity:null,grossCents:null,discountCents:null,netCents:null};
+    const fingerprint=JSON.stringify(row),first=fingerprints.get(fingerprint);if(first){repeated++;if(removeExactDuplicates){removed++;item.decision='Exact repeat removed';item.reason=`Identical to data record ${first} across every source column.`;audit.push(item);return;}}else fingerprints.set(fingerprint,index+1);
+    const problems=[];
+    for(const name of ['order_id','line_id','sku']){if(!row[pos[name]].trim())problems.push(`${name} is blank`);else if(row[pos[name]]!==row[pos[name]].trim())problems.push(`${name} has outer spaces`);}
+    if(lineVersions.get(JSON.stringify([item.order,item.line])).size>1)problems.push('The order and line key has conflicting source records; reconcile the source first');
+    const parsedDate=reviewDate(item.sourceDate,convention);if(parsedDate.status!=='Converted')problems.push(`Date is ${parsedDate.status.toLowerCase()}`);else item.date=parsedDate.iso;
+    const qty=row[pos.quantity];if(!/^\d+$/.test(qty)||!Number.isSafeInteger(Number(qty))||Number(qty)<1)problems.push('Quantity must be a positive whole number');else item.quantity=Number(qty);
+    let price=null;try{price=parseRMCents(row[pos.unit_price_rm]);if(price<0){problems.push('Unit price cannot be negative in this sales-line tool');price=null;}}catch(error){problems.push('Unit price: '+error.message);}
+    try{item.discountCents=parseRMCents(row[pos.discount_rm]);if(item.discountCents<0){problems.push('Discount cannot be negative in this sales-line tool');item.discountCents=null;}}catch(error){problems.push('Discount: '+error.message);}
+    if(!item.sourceStatus.trim())problems.push('Status is blank');
+    if(item.quantity!==null&&price!==null){item.grossCents=item.quantity*price;if(!Number.isSafeInteger(item.grossCents)){problems.push('Line gross exceeds the supported exact cent range');item.grossCents=null;}}
+    if(item.grossCents!==null&&item.discountCents!==null){item.netCents=item.grossCents-item.discountCents;if(item.discountCents>item.grossCents)problems.push('Line discount exceeds gross; refunds and returns need a separate workflow');}
+    if(problems.length){item.decision='Needs review';item.reason=problems.map(problem=>problem.replace(/\.+$/,'')).join('. ')+'.';}
+    else if(item.date<start||item.date>=end){item.decision='Outside date window';item.reason='The start is inclusive and the end is exclusive.';}
+    else if(item.sourceStatus!==status){item.decision='Other status';item.reason=`Status is ${item.sourceStatus}; the report includes exactly ${status}.`;}
+    else{item.decision='Included';item.reason=first?`Exact repeat of data record ${first} kept because removal is off.`:'Date and status meet the report rules.';}
+    audit.push(item);
+  });
+  const unresolved=audit.filter(row=>row.decision==='Needs review').length;
+  const counts={source:table.rows.length,included:audit.filter(row=>row.decision==='Included').length,removed,outside:audit.filter(row=>row.decision==='Outside date window').length,otherStatus:audit.filter(row=>row.decision==='Other status').length,unresolved};
+  let totals=null,products=[];
+  if(!unresolved){const included=audit.filter(row=>row.decision==='Included'),bySku=new Map();totals={grossCents:0,discountCents:0,netCents:0,units:0,orders:new Set(included.map(row=>row.order)).size,lines:included.length};
+    for(const row of included){totals.grossCents+=row.grossCents;totals.discountCents+=row.discountCents;totals.netCents+=row.netCents;totals.units+=row.quantity;if(!bySku.has(row.sku))bySku.set(row.sku,{sku:row.sku,units:0,netCents:0});const product=bySku.get(row.sku);product.units+=row.quantity;product.netCents+=row.netCents;}
+    if(Object.values(totals).some(value=>!Number.isSafeInteger(value)))throw new Error('Combined totals exceed the supported exact range. Split the source into smaller verified reports.');
+    products=[...bySku.values()];
+  }
+  return {audit,counts,totals,products,repeatedKept:removeExactDuplicates?0:repeated,start,end,status};
 }
 
 const headers=['order_id','line_id','order_date','customer_code','phone','sku','quantity','unit_price_rm','discount_rm','status','note'];
@@ -127,9 +188,9 @@ const files={
 const $=s=>document.querySelector(s);
 const shell=$('[data-lab-tool]');
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let exportRows=null;
-function invalidate(){exportRows=null;$('#export').disabled=true;$('#result').replaceChildren();}
-function renderTable(head,rows){return `<div class="data-wrap"><table><thead><tr>${head.map(c=>`<th scope="col">${escape(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${escape(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+let exportRows=null,loadVersion=0;
+function invalidate(){loadVersion++;exportRows=null;$('#export').disabled=true;$('#result').replaceChildren();}
+function renderTable(head,rows){return `<div class="data-wrap"><table${head.length<=3?' class="compact"':''}><thead><tr>${head.map(c=>`<th scope="col">${escape(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${escape(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
 function stats(values){return `<div class="result-summary">${values.map(([n,l])=>`<div class="result-stat"><strong>${escape(n)}</strong>${escape(l)}</div>`).join('')}</div>`;}
 function message(error){$('#result').innerHTML=`<div class="error-box" role="alert">${escape(error.message)}</div>`;}
 function table(selector){return parseCSV($(selector).value,$('#delimiter').value);}
@@ -137,10 +198,11 @@ function loadSample(){invalidate();const kind=shell.dataset.labTool;
  if(kind==='diagnostic')$('#csv-input').value=files['orders-messy.csv'];
  if(kind==='compare'){$('#csv-a').value=files['orders-a.csv'];$('#csv-b').value=files['orders-b.csv'];$('#key').value='order_id';}
  if(kind==='dates'){$('#csv-input').value=files['mixed-dates.csv'];$('#date-column').value='date';$('#convention').value='review';}
+ if(kind==='sales'){$('#csv-input').value=files['orders-messy.csv'];$('#report-start').value='2026-10-26';$('#report-end').value='2026-11-02';$('#convention').value='dmy';$('#remove-repeats').checked=true;}
  $('#result').innerHTML='<p class="result-note">Fictional sample loaded. Run the tool to see its results.</p>';
 }
 for(const input of shell.querySelectorAll('textarea,select,input')){input.addEventListener('input',invalidate);input.addEventListener('change',invalidate);}
-for(const input of shell.querySelectorAll('input[type=file]'))input.addEventListener('change',async()=>{invalidate();try{const file=input.files[0];if(!file)return;if(file.size>5*1024*1024)throw new Error('Choose a file of 5 MB or less.');const text=await file.text();$(input.dataset.target).value=text;$('#result').innerHTML='<p class="result-note">File read locally. Run the tool to inspect it.</p>';}catch(error){message(error);}});
+for(const input of shell.querySelectorAll('input[type=file]'))input.addEventListener('change',async()=>{invalidate();const version=loadVersion;try{const file=input.files[0];if(!file)return;if(file.size>5*1024*1024)throw new Error('Choose a file of 5 MB or less.');const text=await file.text();if(version!==loadVersion)return;$(input.dataset.target).value=text;$('#result').innerHTML='<p class="result-note">File read locally. Run the tool to inspect it.</p>';}catch(error){if(version===loadVersion)message(error);}});
 $('#sample').addEventListener('click',loadSample);
 $('#run').addEventListener('click',()=>{invalidate();try{
  const kind=shell.dataset.labTool;let html='';
@@ -155,8 +217,9 @@ $('#run').addEventListener('click',()=>{invalidate();try{
   const a=table('#csv-a'),b=table('#csv-b'),key=$('#key').value;const report=compareTables(a,b,key);
   html=stats(Object.entries(report.counts).map(([label,n])=>[n,label]));
   html+=`<p class="result-note">File A: ${a.rows.length} records. File B: ${b.rows.length} records. Results: ${report.results.length} distinct exact keys. Matching is case-sensitive and preserves spaces. Repeated keys require review and are never silently merged.</p>`;
-  html+=renderTable(['Key','Status','Rows in A','Rows in B','First row in A','First row in B'],report.results.slice(0,150).map(r=>[r.key,r.status,r.countA,r.countB,JSON.stringify(r.rowA),JSON.stringify(r.rowB)]));
-  exportRows=[['key','status','rows_in_a','rows_in_b','first_row_a','first_row_b'],...report.results.map(r=>[r.key,r.status,r.countA,r.countB,JSON.stringify(r.rowA),JSON.stringify(r.rowB)])];
+  html+=renderTable(['Key','Status','Rows in A','Rows in B','Changed fields'],report.results.slice(0,150).map(r=>[r.key,r.status,r.countA,r.countB,r.differences.map(d=>`${d.column}: ${d.before} → ${d.after}`).join('\n')||'—']));
+  for(const repeated of report.results.filter(r=>r.status==='Repeated key — review').slice(0,50))html+=`<details class="record-detail"><summary>Inspect repeated records for ${escape(repeated.key)} (${repeated.countA} in A, ${repeated.countB} in B)</summary>${renderTable(['File','Row within key',...a.headers],[...repeated.rowsA.slice(0,50).map((r,i)=>['A',i+1,...r]),...repeated.rowsB.slice(0,50).map((r,i)=>['B',i+1,...a.headers.map(h=>r[b.headers.indexOf(h)])])])}<p class="result-note">Preview: up to 50 records from each file per group and 50 repeated-key groups. The download retains every record for every group.</p></details>`;
+  exportRows=[['key','status','rows_in_a','rows_in_b','changed_fields','all_rows_a','all_rows_b'],...report.results.map(r=>[r.key,r.status,r.countA,r.countB,JSON.stringify(r.differences),JSON.stringify(r.rowsA.map(row=>Object.fromEntries(a.headers.map((h,i)=>[h,row[i]])))),JSON.stringify(r.rowsB.map(row=>Object.fromEntries(b.headers.map((h,i)=>[h,row[i]]))))])];
  }
  if(kind==='dates'){
   const input=validateTable(table('#csv-input')),col=input.headers.indexOf($('#date-column').value);
@@ -167,9 +230,23 @@ $('#run').addEventListener('click',()=>{invalidate();try{
   html+='<p class="result-note">This is a review report. Unresolved values stay visible and are not replaced in your original file. The selected date convention applies to every non-ISO date, including values that conflict with that convention.</p>';
   exportRows=[['data_record','original_date','status','proposed_iso_date','explanation'],...results.map(r=>[r.record,r.value,r.status,r.iso,r.note])];
  }
+ if(kind==='sales'){
+  const input=table('#csv-input');const report=reconcileSales(input,{start:$('#report-start').value,end:$('#report-end').value,convention:$('#convention').value,removeExactDuplicates:$('#remove-repeats').checked});
+  const money=cents=>formatCents(cents,{grouping:true});
+  const c=report.counts;
+  html=stats([[c.source,'source records'],[c.included,'included lines'],[c.removed,'exact repeats removed'],[c.outside,'outside date window'],[c.otherStatus,'other status'],[c.unresolved,'need review']]);
+  if(report.totals){const t=report.totals;html+=`<div class="sales-total"><span>NET SHIPPED SALES${report.repeatedKept?' · REPEATED RECORDS KEPT':''}</span><strong>RM ${money(t.netCents)}</strong><p>${t.units} units · ${t.lines} lines · ${t.orders} distinct orders</p><p>RM ${money(t.grossCents)} gross − RM ${money(t.discountCents)} discounts = RM ${money(t.netCents)} net</p></div>`;
+    if(report.repeatedKept)html+=`<p class="error-box">${report.repeatedKept} exact repeated record(s) remain in the source and may be counted. Confirm the source's row meaning before choosing to remove them.</p>`;
+    html+=renderTable(['SKU','Units','Net sales (RM)'],report.products.map(p=>[p.sku,p.units,money(p.netCents)]));
+  }else html+='<div class="error-box" role="alert">Resolve every “Needs review” record before a total can be calculated. The audit lists the fields to correct.</div>';
+  html+=`<p class="result-note">Window: ${escape(report.start)} inclusive to ${escape(report.end)} exclusive. Eligible status: exactly Shipped. Source count ${c.source} = ${c.included} included + ${c.removed} repeats removed + ${c.outside} outside the window + ${c.otherStatus} other status + ${c.unresolved} needing review.</p>`;
+  html+=renderTable(['Record','Order / line','Decision','Date','Net (RM)','Reason'],report.audit.slice(0,150).map(r=>[r.record,`${r.order} / ${r.line}`,r.decision,r.date,money(r.netCents),r.reason]));
+  exportRows=[['data_record','decision','order_id','line_id','source_date','iso_date','source_status','quantity','gross_rm','discount_rm','net_rm','reason','original_source_record'],...report.audit.map(r=>[r.record,r.decision,r.order,r.line,r.sourceDate,r.date,r.sourceStatus,r.quantity,formatCents(r.grossCents),formatCents(r.discountCents),formatCents(r.netCents),r.reason,JSON.stringify(Object.fromEntries(input.headers.map((h,i)=>[h,r.original[i]])))])];
+ }
  html+='<p class="result-note">Showing at most 150 result rows. The download includes all result rows. CSV has no column types: import identifiers as Text when opening the report in a spreadsheet. Formula-like cells receive a leading apostrophe in the downloaded review report.</p>';
  $('#result').innerHTML=html;$('#export').disabled=false;$('#result').focus();
  }catch(error){message(error);}});
 $('#export').addEventListener('click',()=>{if(!exportRows)return;const blob=new Blob(['\uFEFF'+csvText(exportRows,{spreadsheetSafe:true})],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${shell.dataset.labTool}-review.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+$('#clear')?.addEventListener('click',()=>{for(const field of shell.querySelectorAll('textarea,input')){if(field.type==='checkbox')field.checked=false;else field.value='';}for(const field of shell.querySelectorAll('select'))field.selectedIndex=0;invalidate();$('#result').innerHTML='<p class="result-note">Inputs and results cleared from this page.</p>';});
 
 })();

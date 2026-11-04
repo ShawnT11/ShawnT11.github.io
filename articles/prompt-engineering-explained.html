@@ -21,7 +21,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430860743061587" crossorigin="anonymous"></script>
     <script defer src="../script.js?v=20260818-4"></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Prompt Engineering Explained Without the Hype","description":"A practical guide to writing prompts that give AI a clear task, enough context, and useful boundaries without making prompts unnecessarily long.","dateModified":"2026-08-02","datePublished":"2026-07-20","author":{"@type":"Organization","name":"The AI Explainer"},"publisher":{"@type":"Organization","name":"The AI Explainer","url":"https://theaiexplainer.com"},"mainEntityOfPage":"https://theaiexplainer.com/articles/prompt-engineering-explained.html"}</script>
-  <link rel="stylesheet" href="../lab.css?v=20261104"></head>
+  <link rel="stylesheet" href="../lab.css?v=20261104-2"></head>
   <body class="legacy">
     <header class="lab-header"><a class="lab-skip" href="#main">Skip to content</a><div class="lab-nav"><a class="lab-logo" href="../index.html"><span class="lab-monogram" aria-hidden="true">ai</span>The AI Explainer</a><nav class="lab-links" aria-label="Main navigation"><a href="../articles.html">Workflows</a><a href="../tools.html">Tools</a><a href="../downloads.html">Downloads</a><a href="../about.html">About</a></nav></div></header>
     <main id="main" class="article-layout">
@@ -80,26 +80,7 @@
           <div class="prompt-box">Task: [what the AI should produce]<br />Audience: [who will use or read it]<br />Source: [what material it may use]<br />Format: [bullets, table, email, checklist]<br />Boundaries: [what not to invent, reveal, or change]<br />Review: [facts, tone, privacy, missing details]</div>
         </section>
         <section class="content-section">
-          <h2>How to apply this guide</h2>
-          <p>Use this guide when your AI results feel vague, generic, too long, or hard to review. Better prompting is not about secret phrases. It is about designing a clearer task with boundaries and a review path.</p>
-          <ul>
-            <li>Write the task in one sentence before opening an AI tool.</li>
-            <li>Decide which parts need human review: define the job, give useful context, set review boundaries.</li>
-            <li>Remove private or unnecessary context before prompting.</li>
-            <li>Check whether the final output changes a fact, promise, number, date, or decision.</li>
-          </ul>
-          <p>A prompt should reduce ambiguity without adding private details the model does not need. If the prompt becomes a long dump of context, stop and separate the source, task, and checks.</p>
-        </section>
-        <section class="content-section">
-          <h2>A safer prompt to try</h2>
-          <p>Use this starter prompt when you want help with the idea in this guide but still want the model to show its limits.</p>
-          <div class="prompt-box">Turn my rough request into a better AI prompt. Keep it short. Include the task, audience, context, output format, boundaries, and verification steps. Ask one clarifying question only if the request cannot be answered safely.</div>
-        </section>
-        <section class="content-section reviewer-note">
-          <h2>About this background guide</h2><p>This is a general AI literacy guide. For original sample data, worked calculations, and browser tools, visit the <a href="../articles.html">spreadsheet workflow collection</a>.</p>
-        </section>
-        <section class="source-list">
-          <h2>Sources and further reading</h2>
+          <h2>Improve the specification before adding a persona</h2><p>“Act as a spreadsheet expert and analyze my data” leaves the task open. A more useful request states the source grain, intended result, date rule, eligible status, and how the answer will be checked. For this site's order sample, one row represents an order line and a repeated order ID may be legitimate.</p><p>An authored task specification could be: “Explain a weekly sales summary for a line-item export. Use an inclusive start and an exclusive end date. Include Shipped lines only. Explain how line count differs from distinct order count. List the input types the calculation requires.” This asks for a bounded explanation rather than a claim that the assistant has validated a file.</p><p>The fictional sample supplies a check: nine eligible lines represent eight orders. A proposed method that removes every repeated order ID will discard a genuine pen line worth RM9.60. That counterexample makes an otherwise vague requirement concrete.</p><p><a href="../guides/duplicate-orders-vs-order-lines.html">See the row-grain example and its expected result</a>.</p><h2>Sources and further reading</h2>
           <p>These links are included so readers can compare this plain-English guide with primary or policy-oriented resources.</p>
           <ul>
             <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li>
