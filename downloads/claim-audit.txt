@@ -1,0 +1,6 @@
+AUTHORED PRACTICE DRAFT — not a recorded AI response.
+Draft: Our weekly report proves sales grew 18%. Nine orders produced RM267.60, and all customer identifiers were preserved.
+Available evidence: The site's fictional weekly-sales workbook contains nine included lines across eight distinct orders, 26 units and RM267.60 net shipped sales for 26 October through 1 November 2026.
+No prior-period total is supplied.
+Identifier preservation requires inspecting stored values; a displayed report total alone cannot prove it.
+Task: classify each draft claim as supported, contradicted or unestablished, then rewrite only from supported facts.

@@ -1,0 +1,6 @@
+source_statement,type,action_or_decision,owner,due_date,needs_confirmation
+Use the new order export for next week's report.,Decision,Use new export,,,Which reporting week
+I will confirm by 11 November whether discounts are per line.,Action,Confirm discount meaning,Dan,2026-11-11,
+Someone should check the repeated order.,Unassigned action,Review repeated order,,,Owner and deadline
+We might switch suppliers if the problem continues.,Proposal,Possible supplier change,,,No decision recorded
+Discuss again Friday.,Follow-up,Discuss again,,,Confirm calendar date

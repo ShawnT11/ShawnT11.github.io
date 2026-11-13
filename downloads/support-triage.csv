@@ -1,0 +1,7 @@
+ticket_id,message,expected_queues
+T01,Please refund my unused order.,Refund
+T02,The mug arrived broken.,Replacement
+T03,I was charged twice and my parcel is missing.,Billing + Delivery
+T04,What time do you close?,Information
+T05,Do not refund this order; please replace the broken item.,Replacement
+T06,The problem is back.,Needs clarification

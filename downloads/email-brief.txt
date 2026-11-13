@@ -1,0 +1,7 @@
+FICTIONAL PRACTICE BRIEF — no actual customer data.
+Purpose: update a customer about a delayed parcel.
+Verified fact: the carrier estimates delivery on 20 November 2026.
+Uncertainty: the estimate is not guaranteed.
+Authority: the writer may offer a status update, but may not promise refunds or compensation.
+Unknowns: customer name and order reference. Keep placeholders.
+Output: at most 90 words; calm, specific and ready for a person to review.
