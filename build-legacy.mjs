@@ -6,7 +6,7 @@ const baseUrl = "https://theaiexplainer.com";
 const lastmod = "2026-08-02";
 const reviewed = "August 2, 2026";
 const adClient = "ca-pub-3430860743061587";
-const contactEmail = "hello@theaiexplainer.com";
+const feedbackUrl = "https://github.com/ShawnT11/ShawnT11.github.io/issues";
 const assetVersion = "20260818-4";
 
 function writeFile(relativePath, content) {
@@ -1806,7 +1806,7 @@ const simplePages = [
       <p>The main audience is non-technical readers: office workers, students, freelancers, small business owners, and curious people who want to use AI carefully without needing a computer science background.</p>
       <p>The site is maintained as an editorial resource rather than a tool directory. Each guide is written to answer a specific reader question, explain the limits of AI assistance, and give a practical review step that can be used before someone trusts an output.</p>
       <h2>Who is responsible for the content</h2>
-      <p>Articles are published under The AI Explainer Editorial Desk so the site can keep one consistent review standard. The site owner is responsible for final publication decisions, corrections, page updates, advertising boundaries, and reader contact through <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>
+      <p>Articles are published under The AI Explainer Editorial Desk so the site can keep one consistent review standard. The site owner is responsible for final publication decisions, corrections, page updates, advertising boundaries, and reader contact through <a href="${feedbackUrl}">public issue tracker</a>.</p>
       <h2>Editorial focus</h2>
       <p>Articles focus on clear examples, responsible use, practical checklists, and source-aware explanations. The site avoids hype, copied summaries, fake certainty, and advice that should come from qualified legal, medical, financial, or security professionals.</p>
       <h2>How the site is maintained</h2>
@@ -1814,7 +1814,7 @@ const simplePages = [
       <h2>What the site does not do</h2>
       <p>The AI Explainer does not provide legal, medical, financial, security, immigration, tax, or professional compliance advice. It also does not claim that AI tools are safe for every workplace or every kind of data. The goal is to help readers ask better questions before they rely on a tool.</p>
       <h2>Reader contact</h2>
-      <p>For corrections, privacy questions, permissions, or general feedback, email <a href="mailto:${contactEmail}">${contactEmail}</a>. Include the page URL and the specific sentence or issue that needs review.</p>`,
+      <p>For corrections, privacy questions, permissions, or general feedback, use the <a href="${feedbackUrl}">public issue tracker</a>. Include the page URL and the specific sentence or issue that needs review.</p>`,
   },
   {
     relativePath: "contact.html",
@@ -1825,7 +1825,7 @@ const simplePages = [
     eyebrow: "Contact",
     h1: "Contact and corrections.",
     body: `<p>Use this page for corrections, privacy questions, copyright questions, permissions, advertising notices, and general feedback about The AI Explainer.</p>
-      <p>Email: <a href="mailto:${contactEmail}">${contactEmail}</a>. Typical review time is 3 to 5 business days for ordinary site messages. Include the page URL, the exact sentence or issue, and enough context to review the concern.</p>
+      <p>Use the <a href="${feedbackUrl}">public issue tracker</a>. Reports are public and a GitHub account is required. No response time is promised. Include the page URL, the exact sentence or issue, and enough context to review the concern.</p>
       <h2>Correction requests</h2>
       <p>If an article may be unclear or outdated, include the article title, the relevant paragraph, and the source or reason for the correction. Corrections are reviewed for accuracy and usefulness. If a change materially affects a reader's understanding, the page may be updated with a new review date.</p>
       <h2>What to include</h2>
@@ -1862,7 +1862,7 @@ const simplePages = [
       <h2>Sources and verification</h2>
       <p>When a page discusses current products, policies, prices, legal requirements, medical topics, financial decisions, or other high-stakes matters, readers are told to verify details with primary sources or qualified professionals. Articles are written to support practical judgment, not replace it.</p>
       <h2>Corrections and updates</h2>
-      <p>AI products, search experiences, and privacy settings change. Pages may be updated when examples become outdated, explanations can be clearer, or a reader reports an issue. Material changes should keep the article useful rather than simply adding keywords. Correction requests can be sent to <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>
+      <p>AI products, search experiences, and privacy settings change. Pages may be updated when examples become outdated, explanations can be clearer, or a reader reports an issue. Material changes should keep the article useful rather than simply adding keywords. Correction requests can be sent to <a href="${feedbackUrl}">public issue tracker</a>.</p>
       <h2>Advertising boundary</h2>
       <p>Advertising may help support the site, but ads do not determine article conclusions. Any sponsored content or affiliate relationship should be disclosed clearly if introduced.</p>`,
   },
@@ -1891,7 +1891,7 @@ const simplePages = [
       <h2>Children</h2>
       <p>This site is written for a general audience and is not directed to children under 13. Readers should follow school, parent, and local rules when using AI tools.</p>
       <h2>Contact</h2>
-      <p>For privacy questions, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
+      <p>For privacy questions, use the <a href="${feedbackUrl}">public issue tracker</a>.</p>`,
   },
   {
     relativePath: "terms.html",
@@ -1911,13 +1911,13 @@ const simplePages = [
       <h2>Advertising</h2>
       <p>The site may show advertisements. Advertising does not create an endorsement unless clearly stated. Do not click ads in a way that is artificial, misleading, or intended to inflate revenue.</p>
       <h2>No professional relationship</h2>
-      <p>Reading the site, using a browser-based tool, or emailing a correction request does not create a professional, advisory, attorney-client, medical, financial, security, employment, or consulting relationship. Readers remain responsible for checking facts and choosing the right professional review for high-stakes decisions.</p>
+      <p>Reading the site, using a browser-based tool, or posting a correction request does not create a professional, advisory, attorney-client, medical, financial, security, employment, or consulting relationship. Readers remain responsible for checking facts and choosing the right professional review for high-stakes decisions.</p>
       <h2>Use of the site</h2>
       <p>Readers may use the site for personal learning. Do not misuse the site, attempt to disrupt it, scrape it aggressively, or copy substantial portions for republication without permission.</p>
       <h2>Changes to pages</h2>
       <p>Articles and tools may be updated as AI products, privacy practices, search experiences, and reader questions change. Updated pages should keep the original purpose clear and should not add keywords or claims that do not help readers.</p>
       <h2>Contact</h2>
-      <p>For permissions, corrections, privacy questions, or content concerns, email <a href="mailto:${contactEmail}">${contactEmail}</a>.</p>`,
+      <p>For permissions, corrections, privacy questions, or content concerns, use the <a href="${feedbackUrl}">public issue tracker</a>.</p>`,
   },
   {
     relativePath: "copyright.html",
@@ -1936,7 +1936,7 @@ const simplePages = [
       <h2>AI-assisted reuse</h2>
       <p>Do not use automated tools to scrape, rewrite, or mass-republish the site in a way that substitutes for the original pages. Short quotations, links, and ordinary reader notes are welcome when they help people find the original article.</p>
       <h2>Copyright concerns</h2>
-      <p>If you believe content on this site should be reviewed for copyright reasons, email <a href="mailto:${contactEmail}">${contactEmail}</a> with the page URL, details of the issue, and your contact information.</p>`,
+      <p>If you believe content on this site should be reviewed for copyright reasons, use the <a href="${feedbackUrl}">public issue tracker</a> with the page URL and details of the issue. Keep personal information and private files out of public reports.</p>`,
   },
 ];
 
